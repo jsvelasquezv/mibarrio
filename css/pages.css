@@ -1,0 +1,201 @@
+body {
+  
+  background-color:#FFFFFF;
+  //background:url(../resources/wallNaranja2.png) repeat;
+  font-family: 'Roboto', sans-serif;
+}
+
+.menu-bar {
+  overflow: hidden;
+  //min-height: 90%;
+  position: fixed;
+  z-index:10;
+  width: 190px;
+  margin-left: 0px;
+  float:left;
+  left:0px;
+  padding: 10px;
+  background: #F7F7F7;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.menu-bar h1 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 1.6em;
+  color: orange;
+}
+
+.menu-bar h2 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 1em;
+  color: orange;
+}
+
+.menu-bar a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  //opacity: 0.6;
+  transition: opacity ease 0.5s;
+}
+
+.menu-bar a:hover {
+  color:orange;
+}
+
+
+.image-perfil {
+
+  width: 160px ;
+  height: 180px;
+  border: 2px solid #f89934;
+  margin: 0 auto;
+  border-radius: 2px;
+  //box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  
+}
+
+.contenido input[type=submit],[type=reset] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.contenido input[type=text], input[type=password] {
+  height: 30px;
+  font-size: 16px;
+  width: 100%;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.contenido input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.login-help {
+  margin:0 auto;
+  text-align: center;
+
+}
+
+.contenido{
+  display:normal;
+  z-index:1;
+  position:absolute;
+  //float:left;
+  padding: 20px;
+  width: 60%;
+  margin-left: 210px;
+  margin-top:55px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  //overflow: hidden;
+}
+.contenido h1 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 2.3em;
+  color: orange;
+}
+
+ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  position: relative;
+}
+
+/*Create a horizontal list with spacing*/
+li {
+  display:block;
+  margin-right: 1px;
+}
+
+/*Style for menu links*/
+li a {
+  display:block;
+  width: 160px;
+  margin:0 auto;
+  text-align: center;
+  font-size: 0.9em;
+  border-bottom: 2px solid orange;
+  padding-bottom: 5px;
+  padding-top:8px;
+
+}
+
+/*Hover state for top level links*/
+
+
+/*Style for dropdown links*/
+
+
+/*Hover state for dropdown links*/
+li:hover ul a:hover {
+  background: #19c589;
+  color: #fff;
+}
+
+/*Hide dropdown links until they are needed*/
+li ul {
+  display: none;
+}
+
+/*Make dropdown links vertical*/
+li ul li {
+  display: block;
+  float: none;
+}
+
+/*Prevent text wrapping*/
+li ul li a {
+  width: auto;
+  min-width: 100px;
+  padding: 0 20px;
+}
+
+/*Display the dropdown on hover*/
+ul li a:hover + .hidden, .hidden:hover {
+  display: block;
+}
+
+/*Style 'show menu' label button and hide it by default*/
+.show-menu {
+  text-decoration: none;
+  color: #fff;
+  background: #f89934;
+  text-align: center;
+  padding: 10px 0;
+  display: none;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+
+
+
+

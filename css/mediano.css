@@ -1,0 +1,175 @@
+/*Strip the ul of padding and list styling*/
+.menu-bar {
+		overflow: hidden;
+		height: auto;
+		position: fixed;
+		width: 99%;
+		top:0px;
+		padding: 10px;
+		background: #F7F7F7;
+		border-radius: 2px;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.contenido{
+  display:normal;
+  float:left;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  //overflow: hidden;
+  margin-top:90px;	
+  margin-left:0px;
+  padding: 10px;
+  width: 97%;
+}
+
+.sesion-bar {
+  position:absolute;
+  top: 100%;
+  left: 100%;
+  margin-top: -50px;   /* height/2 = 500px / 2 */
+  margin-left:-180px;
+}
+
+.menu-bar h2 {
+  display: none;
+}
+
+.menu-bar a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  //opacity: 0.6;
+  transition: opacity ease 0.5s;
+}
+
+.menu-bar a:hover {
+  color:orange;
+}
+
+
+.menu-bar h1 {
+	margin-top:0px;
+	float:left;
+}
+.image-perfil{
+	display:none;
+
+}
+
+
+.login-help {
+
+  margin:0 auto;
+  text-align: center;
+  
+}
+
+ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	position: relative;
+	float:right;
+	margin-top:5px;
+	margin-right:20px;
+}
+
+/*Create a horizontal list with spacing*/
+li {
+	display:inline-block;
+	float: left;
+	margin-right: 1px;
+}
+
+/*Style for menu links*/
+li a {
+	display:block;
+	min-width:140px;
+	height: 25px;
+	min-width: 160px;
+	text-align: center;
+	font-size: 0.9em;
+
+	margin:0 auto;
+
+	border-bottom: 2px solid orange;
+	padding-bottom: 2px;
+	padding-top:0px;
+}
+
+/*Hover state for top level links*/
+li:hover a {
+
+}
+
+/*Style for dropdown links*/
+li:hover ul a {
+	color: #2f3036;
+	height: 40px;
+	line-height: 40px;
+}
+
+/*Hover state for dropdown links*/
+li:hover ul a:hover {
+	color: #fff;
+}
+
+/*Hide dropdown links until they are needed*/
+li ul {
+	display: none;
+}
+
+/*Make dropdown links vertical*/
+li ul li {
+	display: block;
+	float: none;
+}
+
+/*Prevent text wrapping*/
+li ul li a {
+	width: auto;
+	min-width: 100px;
+	padding: 0 20px;
+}
+
+/*Display the dropdown on hover*/
+ul li a:hover + .hidden, .hidden:hover {
+	display: block;
+}
+
+/*Style 'show menu' label button and hide it by default*/
+.show-menu {
+	text-decoration: none; 
+	color: #fff;
+	background: #f89934;
+	text-align: center;
+	padding: 10px 0;
+	display: none;
+	//float:right;
+}
+.contenido h1 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 2.3em;
+  color: orange;
+}
+
+/*Hide checkbox*/
+input[type=checkbox]{
+    display: none;
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+
+
+/*Responsive Styles*/
+
+
+
