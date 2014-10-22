@@ -86,13 +86,9 @@
 				echo "<a href='Gestion_Perfil.php?gestion=perfil'>Gesti&oacute;n Perfil</a></div>
 				</li>";
 			}
-			if($c_perfil->get_PermisoProductos()){
-				echo "<li><div class='login-help'>";
-				echo "<a href='#'>Productos</a></div></li>";
-			}
 			if($c_perfil->get_PermisoInventario()){
 				echo "<li><div class='login-help'>";
-				echo "<a href='#'>Inventario</a></div></li>";
+				echo "<a href='Inventario.php'>Inventario</a></div></li>";
 			}
 			if($c_perfil->get_PermisoFacturacion()){
 				echo "<li><div class='login-help'>";

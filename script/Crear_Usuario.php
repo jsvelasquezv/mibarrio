@@ -6,7 +6,4 @@
 						$_REQUEST['dire'], $_REQUEST['e_mail'], $_REQUEST['tipo_id'], $_REQUEST['ciud'], $_REQUEST['pregun'], $_REQUEST['respues'], 
 						$_REQUEST['celu'], $_REQUEST['_edad'], $_REQUEST['fot'], $_REQUEST['gene'], $_REQUEST['perfi']);
 
-	
-	
-
 ?>

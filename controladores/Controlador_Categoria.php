@@ -6,44 +6,39 @@
 		private $nombre=""; // string
 		private $descripcion=""; // string
 		
-		public function Controlador_Categoria()
-		{
-			
-		}
-
-		public function Controlador_Categoria($id, $nombre, $descripcion)
+		public function crear_Categoria($id, $nombre, $descripcion)
 		{
 			$this->id=$id;
 			$this->nombre=$nombre;
 			$this->descripcion=$descripcion;
 		}
 
-		public function getId()
+		public function get_Id()
 		{
 			return $this->id;
 		}
 
-		public function getNombre()
+		public function get_Nombre()
 		{
 			return $this->nombre;
 		}
 
-		public function getDescripcion()
+		public function get_Descripcion()
 		{
 			return $this->descripcion;
 		}
 
-		public function setId($id)
+		public function set_Id($id)
 		{
 			$this->id=$id;
 		}
 
-		public function setNombre($nombre)
+		public function set_Nombre($nombre)
 		{
 			$this->nombre=$nombre;
 		}
 
-		public function setDescripcion($descripcion)
+		public function set_Descripcion($descripcion)
 		{
 			$this->descripcion=$descripcion;
 		}

@@ -10,16 +10,6 @@
 	// se busca el perfil seleccionado
 	$m_perfil2->buscar_Perfil($nombre);
 
-	/*echo '<td>
-		<p>nombre = '.$c_perfil2->get_Nombre().'
-		<p>sistema = '.$c_perfil2->get_PermisoSistema().'
-		<p>perfiles = '.$c_perfil2->get_PermisoPerfiles().'
-		<p>productos = '.$c_perfil2->get_PermisoProductos().'
-		<p>inventario = '.$c_perfil2->get_PermisoInventario().'
-		<p>factu = '.$c_perfil2->get_PermisoFacturacion().'
-		<p>report = '.$c_perfil2->get_PermisoReportes().'
-	';*/
-
 	// se verifican los permisos del usuario.
 if($c_perfil->get_PermisoPerfiles()){
 		// se imprime el form y la tabla que contendra los valores modificables del perfil que se selecciono

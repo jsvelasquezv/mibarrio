@@ -1,8 +1,5 @@
 <?php
-	/**
-	* 
-	*/
-	class ClassName Controlador_Producto
+	class Controlador_Producto
 	{
 		private $id; // int
 		private $nombre; // int
@@ -13,125 +10,132 @@
 		private $precioVenta; //string
 		private $cantidad; //string
 		private $iva; // bool
+		private $valorIva;
 		private $estado; // bool
-		function __construct(argument)
-		{
-			
-		}
-		
-		public function Controlador_Producto()
-		{
-			
-		}
 
-		public function Controlador_Producto($id, $nombre, $descripcion, $categoria, $valorPrecio, $precioCompra, $precioVenta, $cantidad, $iva, $estado)
+		public function crear_Producto($id, $nombre, $descripcion, $categoria, $iva, $valorIva, $precioCompra, 
+		$precioVenta, $cantidad, $estado)
 		{
 			$this->id=$id;
 			$this->nombre=$nombre; 
 			$this->descripcion=$descripcion; 
 			$this->categoria=$categoria; 
-			$this->valorPrecio=$valorPrecio; 
+			$this->iva=$iva; 
+			$this->valorIva=$valorIva;
 			$this->precioCompra=$precioCompra; 
 			$this->precioVenta=$precioVenta; 
 			$this->cantidad=$cantidad; 
-			$this->iva=$iva; 
 			$this->estado=$estado;
 		}
 
-		public function getId()
+		public function get_Id()
 		{
 			return $this->id;
 		}
 
-		public function getNombre()
+		public function get_Nombre()
 		{
 			return $this->nombre;
 		}
 
-		public function getDescripcion()
+		public function get_Descripcion()
+		{
+			return $this->descripcion;
+		}
+
+		public function get_Categoria()
 		{
 			return $this->categoria;
 		}
 
-		public function getValorPrecio()
+		public function get_Valor_Precio()
 		{
 			return $this->valorPrecio;
 		}
 
-		public function getPrecioCompra()
+		public function get_Precio_Compra()
 		{
 			return $this->precioCompra;
 		}
 
-		public function getPrecioVenta()
+		public function get_Precio_Venta()
 		{
 			return $this->precioVenta;
 		}
 
-		public function getCantidad()
+		public function get_Cantidad()
 		{
 			return $this->cantidad;
 		}
 
-		public function getIva()
+		public function get_Iva()
 		{
 			return $this->iva;
 		}
 
-		public function getEstado()
+		public function get_Valor_Iva()
+		{
+			return $this->valorIva;
+		}
+
+		public function get_Estado()
 		{
 			return $this->estado;
 		}
 
-		public function setId($id)
+		public function set_Id($id)
 		{
 			$this->id=$id;
 		}
 
-		public function setNombre($nombre)
+		public function set_Nombre($nombre)
 		{
 			$this->nombre=$nombre;
 		}
 
-		public function setDescripcion($descripcion)
+		public function set_Descripcion($descripcion)
 		{
 			$this->descripcion=$descripcion;
 		}
 
-		public function setValorPrecio($valorPrecio)
+		public function set_Categoria($categoria)
+		{
+			$this->categoria=$categoria;
+		}
+
+		public function set_Valor_Precio($valorPrecio)
 		{
 			$this->valorPrecio=$valorPrecio;
 		}
 
-		public function setPrecioVenta($precioVenta)
+		public function set_Precio_Venta($precioVenta)
 		{
 			$this->precioVenta=$precioVenta;
 		}
 
-		public function setPrecioCompra($precioCompra)
+		public function set_Precio_Compra($precioCompra)
 		{
 			$this->precioCompra=$precioCompra;
 		}
 
-		public function setCantidad($cantidad)
+		public function set_Cantidad($cantidad)
 		{
 			$this->cantidad=$cantidad;
 		}
 
-		public function setIva($iva)
+		public function set_Iva($iva)
 		{
 			$this->iva=$iva;
 		}
 
-		public function setEstado($estado)
+		public function set_Valor_Iva($valorIva)
+		{
+			$this->valorIva=$valorIva;
+		}
+
+		public function set_Estado($estado)
 		{
 			$this->estado=$estado;
 		}
-
-		public function validar()
-		{
-			
-		}
-
 	}
 ?>
