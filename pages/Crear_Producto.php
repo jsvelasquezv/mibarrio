@@ -99,13 +99,13 @@ switch ($numero_error){
                    
                     <tr>
                         <td>
-                            G&eacute;nero:
+                            Estado:
                         </td>
                         <td>
                             <!-- Aqui el algoritmo para hacer un combobox para el estado -->
                             <select name='estado' class='select'>
-                                <option value='T' selected>Disponible</option>
-                                <option value='F'>No Disponible</option>
+                                <option value='Disponible' selected>Disponible</option>
+                                <option value='No Disponible'>No Disponible</option>
                             </select>
                         </td>  
                     </tr>
@@ -150,7 +150,7 @@ switch ($numero_error){
 
 break;
 case 1:
-	echo "<h1><i>Se ha creado el usuario.</i></h1>";
+	echo "<h1><i>Se ha creado el Producto.</i></h1>";
 break; 
 case 2:
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";

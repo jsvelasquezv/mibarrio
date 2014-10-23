@@ -14,7 +14,7 @@ class Modelo_Categoria{
 	
 	// Void: Buscar los datos del usuario dependiendo del Nombre de usuario
 	public function buscar_Categoria($categoria){
-		$sql = "select id, nombre, descripcion from usuarios where Categoria='$categoria'";
+		$sql = "select id, nombre, descripcion from categoria where nombre='$categoria'";
 		$registros = $this->bd->consultar($sql);
 		if($reg=mysql_fetch_array($registros)){
 			$this->categoria->set_Id($reg['id']);

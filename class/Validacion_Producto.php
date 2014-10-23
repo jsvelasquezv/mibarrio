@@ -34,7 +34,7 @@ class Validar_Producto{
 		$precioVenta, $cantidad, $iva, $valorIva, $estado)
 	{
 
-		$c_categoria = new Controlador_Perfil();
+		$c_categoria = new Controlador_Categoria();
 		$m_categoria = new Modelo_Categoria($c_categoria);
 		$m_categoria->buscar_Categoria($categoria);
 		$c_producto = new Controlador_Producto();
