@@ -29,8 +29,31 @@ switch ($numero_error){
                         <td colspan='2'>
                             Modificar Producto
                         </td>
-                     <tr> 
-                    
+                    <tr>
+                    <tr>
+                        <td>
+                            Nombre:
+                        </td>
+                        <td>
+                          <input type='text' name='nombre' value='".$c_producto->get_Nombre()."' placeholder='Nombre' required='required' maxlength=30/>
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td>
+                            Descripcion:
+                        </td>
+                        <td>
+                          <input type='text' name='descripcion' value='".$c_producto->get_Descripcion()."' placeholder='Descripcion' required='required' maxlength=500/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Categoria:
+                        </td>
+                        <td>
+                          <input type='text' name='categoria' value='".$c_producto->get_Categoria()."' placeholder='Nombre' required='required' readonly maxlength=30/>
+                        </td>  
+                    </tr>         
                     <tr>
                         <td>
                            Iva:
@@ -38,21 +61,54 @@ switch ($numero_error){
                         <td>
                             <select name='iva' class='select'>";
                         // Aqui el algoritmo para hacer un combobox para el genero
-                        if($c_producto->get_Iva() == "SI"){
+                        if($c_producto->get_Iva() == 'SI'){
                             echo "
-                                <option value='SI' selected>SI</option>
-                                <option value='NO'>NO</option>                              
+                                <option value='SI' selected onclick='myFunction()''>SI</option>
+                                <option value='NO' onclick='myFunction2()''>NO</option>                              
                             </select>";
-                        }elseif($c_producto->get_Iva() == "NO") {
+                        }elseif($c_producto->get_Iva() == 'NO') {
                             echo "
-                                <option value='SI'>SI</option>
-                                <option value='NO' selected>NO</option>                             
+                                <option value='SI' onclick='myFunction()''>SI</option>
+                                <option value='NO' selected onclick='myFunction2()''>NO</option>                             
                             </select>";
                         }
                         echo "
                         </td>
-                    </tr>
+                    </tr>                 
                     <tr>
+                        <td>
+                            Valor Iva:
+                        </td>
+                        <td>
+                          <input type='text' name='valorIva' id='valorIva' value='".$c_producto->get_Valor_Iva()."' placeholder='Valor Iva' required='required' maxlength=6/>
+                        </td>  
+                    </tr>               
+                    <tr>
+                        <td>
+                            Precio de Compra:
+                        </td>
+                        <td>
+                          <input type='text' name='precioCompra' value='".$c_producto->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' maxlength=10/>
+                        </td>  
+                    </tr>
+                     <tr>
+                        <td>
+                            Precio de Venta:
+                        </td>
+                        <td>
+                          <input type='text' name='precioVenta' value='".$c_producto->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' maxlength=10/>
+                        </td>  
+                    </tr>
+                                
+                    <tr>
+                        <td>
+                            Cantidad:
+                        </td>
+                        <td>
+                          <input type='text' name='cantidad' value='".$c_producto->get_Cantidad()."' placeholder='Cantidad' required='required' maxlength=10/>
+                        </td>  
+                    </tr>
+                       <tr>
                         <td>
                            Estado:
                         </td>
@@ -73,62 +129,6 @@ switch ($numero_error){
                         echo "
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            Descripcion:
-                        </td>
-                        <td>
-                          <input type='text' name='descripcion' value='".$c_producto->get_Descripcion()."' placeholder='Descripcion' required='required' maxlength=500/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Precio de Compra:
-                        </td>
-                        <td>
-                          <input type='text' name='precioCompra' value='".$c_producto->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' maxlength=10/>
-                        </td>  
-                    </tr>
-                     <tr>
-                        <td>
-                            Precio de Venta:
-                        </td>
-                        <td>
-                          <input type='text' name='precioVenta' value='".$c_producto->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' maxlength=10/>
-                        </td>  
-                    </tr>
-                    <tr>
-                        <td>
-                            Nombre:
-                        </td>
-                        <td>
-                          <input type='text' name='nombre' value='".$c_producto->get_Nombre()."' placeholder='Nombre' required='required' maxlength=30/>
-                        </td>  
-                    </tr>
-                     <tr>
-                        <td>
-                            Categoria:
-                        </td>
-                        <td>
-                          <input type='text' name='categoria' value='".$c_producto->get_Categoria()."' placeholder='Nombre' required='required' readonly maxlength=30/>
-                        </td>  
-                    </tr>
-                    <tr>
-                        <td>
-                            Valor Iva:
-                        </td>
-                        <td>
-                          <input type='text' name='valorIva' value='".$c_producto->get_Valor_Iva()."' placeholder='Valor Iva' required='required' maxlength=6/>
-                        </td>  
-                    </tr>
-                    <tr>
-                        <td>
-                            Cantidad:
-                        </td>
-                        <td>
-                          <input type='text' name='cantidad' value='".$c_producto->get_Cantidad()."' placeholder='Cantidad' required='required' maxlength=10/>
-                        </td>  
-                    </tr>
           <tr>
             <td  TD BGCOLOR='#FFFFFF'>
 
@@ -143,8 +143,17 @@ switch ($numero_error){
             </td>
           </tr>
                 </table>
-            </div><br><br>";
-    echo"</fomr>";
+            </div><br><br>
+              <script>
+                function myFunction() {
+                document.getElementById('valorIva').disabled = false;
+                }
+                function myFunction2() {
+                document.getElementById('valorIva').disabled = true;
+                }
+            </script>
+            ";
+    echo"</form>";
 
 
 break;

@@ -39,19 +39,7 @@ switch ($numero_error){
                          echo "<input type='text' name='id'  placeholder='Id' required='required' maxlength=15 />";
                             echo "
                         </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Iva:
-                        </td>
-                        <td>
-                            <!-- Aqui el algoritmo para hacer un combobox para el iva -->
-                             <select name='iva' class='select'>
-                                <option value='SI' selected onclick='myFunction()''>SI</option>
-                                <option value='NO' onclick='myFunction2()''>NO</option>
-                            </select>
-                        </td>      
-                    </tr>
+                    </tr>    
                     <tr>
                         <td>
                             Nombre:
@@ -67,6 +55,40 @@ switch ($numero_error){
                         <td>
                             <input type='text' name='descripcion'  placeholder='Descripcion' required='required' maxlength=500/>
                         </td>  
+                    </tr>
+                    <tr>
+                        <td>
+                            Categoria:
+                        </td>";
+                        //Aqui el algoritmo para hacer un combobox para los perfiles
+                        $arr_categorias = $m_categoria->mostrar_Todos();
+                        $tam_categorias = count($arr_categorias);
+                        //echo $tam_categorias;
+                        //echo $arr_categorias[2][1];
+                        $combobit = "";
+                        for($i = 0; $i < $tam_categorias; $i++){
+                            if($c_producto->get_Categoria() === $arr_categorias[$i][1]){
+                                $_cate = $arr_categorias[$i][1];
+                                $combobit .=" <option value='".$arr_categorias[$i][1]."' selected>".$arr_categorias[$i][1]."</option>";
+                            }
+                            else $combobit .=" <option value='".$arr_categorias[$i][1]."'>".$arr_categorias[$i][1]."</option>";
+                        }
+                        if($c_perfil->get_PermisoInventario())
+                            echo "<td><select name='categoria' class='select'>".$combobit."</select></td>";
+                        else echo "<td><select name='categoria' class='select' disabled>".$combobit."</select></td>";
+                        echo "
+                    </tr>
+                    <tr>
+                        <td>
+                            Iva:
+                        </td>
+                        <td>
+                            <!-- Aqui el algoritmo para hacer un combobox para el iva -->
+                             <select name='iva' class='select'>
+                                <option value='SI' selected onclick='myFunction()''>SI</option>
+                                <option value='NO' onclick='myFunction2()''>NO</option>
+                            </select>
+                        </td>      
                     </tr>
                     <tr>
                         <td>
@@ -112,29 +134,7 @@ switch ($numero_error){
                                 <option value='No_Disponible'>No Disponible</option>
                             </select>
                         </td>  
-                    </tr>
-                    <tr>
-                        <td>
-                            Seleccionar perfil :
-                        </td>";
-                        //Aqui el algoritmo para hacer un combobox para los perfiles
-                        $arr_categorias = $m_categoria->mostrar_Todos();
-                        $tam_categorias = count($arr_categorias);
-                        //echo $tam_categorias;
-                        //echo $arr_categorias[2][1];
-                        $combobit = "";
-                        for($i = 0; $i < $tam_categorias; $i++){
-                            if($c_producto->get_Categoria() === $arr_categorias[$i][1]){
-                                $_cate = $arr_categorias[$i][1];
-                                $combobit .=" <option value='".$arr_categorias[$i][1]."' selected>".$arr_categorias[$i][1]."</option>";
-                            }
-                            else $combobit .=" <option value='".$arr_categorias[$i][1]."'>".$arr_categorias[$i][1]."</option>";
-                        }
-                        if($c_perfil->get_PermisoInventario())
-                            echo "<td><select name='categoria' class='select'>".$combobit."</select></td>";
-                        else echo "<td><select name='categoria' class='select' disabled>".$combobit."</select></td>";
-                        echo "
-                    </tr>
+                    </tr>                    
                     <tr>
                       <td  TD BGCOLOR='#FFFFFF'>
 
@@ -147,16 +147,14 @@ switch ($numero_error){
                 </table>
             </div><br><br>
             <script>
-function myFunction() {
-    document.getElementById('valorIva').disabled = false;
-}
-function myFunction2() {
-    document.getElementById('valorIva').disabled = true;
-}
-</script>
+                function myFunction() {
+                document.getElementById('valorIva').disabled = false;
+                }
+                function myFunction2() {
+                document.getElementById('valorIva').disabled = true;
+                }
+            </script>
             ";
-
-
 
         echo"</form>";
 
