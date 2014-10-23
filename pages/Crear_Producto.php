@@ -17,9 +17,13 @@ switch ($numero_error){
     $_cate = $c_producto->get_Categoria();
     /*if($c_perfil->get_PermisoSistema()){
         echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?perfi=0' method='post'>";
-    }else*/ echo"<form action='../script/Crear_Producto.php' method='post'>";
+    }else*/ 
+                                
+
+    echo"<form id='formulario' form action='../script/Crear_Producto.php' method='post'>";
 
         echo "<div class='CSSTableGenerator' >
+
                 <table >
                     <tr>
                         <td colspan='2'>
@@ -42,11 +46,11 @@ switch ($numero_error){
                         </td>
                         <td>
                             <!-- Aqui el algoritmo para hacer un combobox para el iva -->
-                            <select name='iva' class='select'>
-                                <option value='SI' selected>SI</option>
-                                <option value='NO'>NO</option>
+                             <select name='iva' class='select'>
+                                <option value='SI' selected onclick='myFunction()''>SI</option>
+                                <option value='NO' onclick='myFunction2()''>NO</option>
                             </select>
-                        </td>  
+                        </td>      
                     </tr>
                     <tr>
                         <td>
@@ -69,7 +73,7 @@ switch ($numero_error){
                             Valor Iva:
                         </td>
                         <td>
-                            <input type='text' name='valorIva'  placeholder='Iva' required='required' maxlength=6/>
+                            <input type='text' name='valorIva' id='valorIva' placeholder='Iva' required='required' maxlength=6/>
                         </td>  
                     </tr>
                     <tr>
@@ -105,7 +109,7 @@ switch ($numero_error){
                             <!-- Aqui el algoritmo para hacer un combobox para el estado -->
                             <select name='estado' class='select'>
                                 <option value='Disponible' selected>Disponible</option>
-                                <option value='No Disponible'>No Disponible</option>
+                                <option value='No_Disponible'>No Disponible</option>
                             </select>
                         </td>  
                     </tr>
@@ -141,11 +145,20 @@ switch ($numero_error){
                       
                     </tr>
                 </table>
-            </div><br><br>";
+            </div><br><br>
+            <script>
+function myFunction() {
+    document.getElementById('valorIva').disabled = false;
+}
+function myFunction2() {
+    document.getElementById('valorIva').disabled = true;
+}
+</script>
+            ";
 
 
 
-        echo"</fomr>";
+        echo"</form>";
 
 
 break;

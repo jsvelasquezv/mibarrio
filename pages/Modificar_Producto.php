@@ -9,26 +9,19 @@
     $numero_error=$_REQUEST['gestion'];
     //Esto es para diferenciar el perfil del usuario que modifica, al usuario que están modificando
     $c_producto = new Controlador_Producto();
-    $c_categoria = new Controlador_Categoria();
-    $c_producto2 = clone $c_producto;
-    $m_producto = new Modelo_Producto($c_producto2);
-    $c_categoria2 = clone $c_categoria;
-    $m_categoria2 = new Modelo_Categoria($c_categoria2);
+    $m_producto = new Modelo_Producto($c_producto);
 
     if($c_perfil->get_PermisoInventario()){
         $m_producto->buscar_Producto($numero_error);
-        $m_categoria2->buscar_Categoria($c_producto2->get_Categoria());
     }
 echo"<div class='contenido'>";
-echo $c_producto2->get_Descripcion();
-echo $c_producto->get_Descripcion();
 switch ($numero_error){ 
  default:
   //todo lo de Modificar el usuario
-  //$_perfi = $c_producto2->get_Perfil();
+  //$_perfi = $c_producto->get_Perfil();
   /*if($c_perfil->get_PermisoSistema()){
     echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?perfi=0' method='post'>";
-  }else*/ echo"<form action='../script/Editar_Producto.php?id=".$c_producto2->get_Id()."' method='post'>";
+  }else*/ echo"<form action='../script/Editar_Producto.php?id=".$c_producto->get_Id()."' method='post'>";
 
     echo "<div class='CSSTableGenerator' >
                 <table >
@@ -37,16 +30,7 @@ switch ($numero_error){
                             Modificar Producto
                         </td>
                      <tr> 
-
-                    <tr>
-                        <td>
-                            Id:
-                        </td>
-                        <td >";
-                         echo "<input type='text' name='id' value='".$c_producto2->get_Id()."' placeholder='Id' required='required' maxlength=15 />";
-                            echo "
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <td>
                            Iva:
@@ -54,12 +38,12 @@ switch ($numero_error){
                         <td>
                             <select name='iva' class='select'>";
                         // Aqui el algoritmo para hacer un combobox para el genero
-                        if($c_producto2->get_Iva() == "SI"){
+                        if($c_producto->get_Iva() == "SI"){
                             echo "
                                 <option value='SI' selected>SI</option>
                                 <option value='NO'>NO</option>                              
                             </select>";
-                        }elseif($c_producto2->get_Iva() == "NO") {
+                        }elseif($c_producto->get_Iva() == "NO") {
                             echo "
                                 <option value='SI'>SI</option>
                                 <option value='NO' selected>NO</option>                             
@@ -75,14 +59,14 @@ switch ($numero_error){
                         <td>
                             <select name='estado' class='select'>";
                         // Aqui el algoritmo para hacer un combobox para el genero
-                        if($c_producto2->get_Estado() == "Disponible"){
+                        if($c_producto->get_Estado() == "Disponible"){
                             echo "
                                 <option value='Disponible' selected>Disponible</option>
-                                <option value='No Disponible'>No Disponible</option>                              
+                                <option value='No_Disponible'>No Disponible</option>                              
                             </select>";
-                        }elseif($c_producto2->get_Iva() == "No Disponible") {
+                        }elseif($c_producto->get_Estado() == "No_Disponible") {
                             echo "
-                                <option value='No Disponible'selected>No Disponible</option>
+                                <option value='No_Disponible'selected>No Disponible</option>
                                 <option value='Disponible'>Disponible</option>                             
                             </select>";
                         }
@@ -94,7 +78,7 @@ switch ($numero_error){
                             Descripcion:
                         </td>
                         <td>
-                          <input type='text' name='descripcion' value='".$c_producto2->get_Descripcion()."' placeholder='Descripcion' required='required' maxlength=50/>
+                          <input type='text' name='descripcion' value='".$c_producto->get_Descripcion()."' placeholder='Descripcion' required='required' maxlength=500/>
                         </td>
                     </tr>
                     <tr>
@@ -102,7 +86,7 @@ switch ($numero_error){
                             Precio de Compra:
                         </td>
                         <td>
-                          <input type='text' name='precioCompra' value='".$c_producto2->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' maxlength=10/>
+                          <input type='text' name='precioCompra' value='".$c_producto->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' maxlength=10/>
                         </td>  
                     </tr>
                      <tr>
@@ -110,7 +94,7 @@ switch ($numero_error){
                             Precio de Venta:
                         </td>
                         <td>
-                          <input type='text' name='precioVenta' value='".$c_producto2->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' maxlength=10/>
+                          <input type='text' name='precioVenta' value='".$c_producto->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' maxlength=10/>
                         </td>  
                     </tr>
                     <tr>
@@ -118,7 +102,15 @@ switch ($numero_error){
                             Nombre:
                         </td>
                         <td>
-                          <input type='text' name='nombre' value='".$c_producto2->get_Nombre()."' placeholder='Nombre' required='required' maxlength=30/>
+                          <input type='text' name='nombre' value='".$c_producto->get_Nombre()."' placeholder='Nombre' required='required' maxlength=30/>
+                        </td>  
+                    </tr>
+                     <tr>
+                        <td>
+                            Categoria:
+                        </td>
+                        <td>
+                          <input type='text' name='categoria' value='".$c_producto->get_Categoria()."' placeholder='Nombre' required='required' readonly maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -126,7 +118,7 @@ switch ($numero_error){
                             Valor Iva:
                         </td>
                         <td>
-                          <input type='text' name='valorIva' value='".$c_producto2->get_Valor_Iva()."' placeholder='Valor Iva' required='required' maxlength=6/>
+                          <input type='text' name='valorIva' value='".$c_producto->get_Valor_Iva()."' placeholder='Valor Iva' required='required' maxlength=6/>
                         </td>  
                     </tr>
                     <tr>
@@ -134,29 +126,8 @@ switch ($numero_error){
                             Cantidad:
                         </td>
                         <td>
-                          <input type='text' name='cantidad' value='".$c_producto2->get_Cantidad()."' placeholder='Cantidad' required='required' maxlength=10/>
+                          <input type='text' name='cantidad' value='".$c_producto->get_Cantidad()."' placeholder='Cantidad' required='required' maxlength=10/>
                         </td>  
-                    </tr>
-                    <tr>
-                        <td>
-                            Categoria (Actual: "; echo $c_categoria2->get_Nombre().")
-                        </td>";
-
-                        //Aqui el algoritmo para hacer un combobox para los perfiles
-                        $arr_categoria = $m_categoria2->mostrar_Todos();
-                        $tam_perfiles = count($arr_categoria);
-                        $combobit = "";
-                        for($i = 0; $i < $tam_perfiles; $i++){
-                          if($c_categoria2->get_Nombre() === $arr_categoria[$i][1]){
-                            $_perfi = $arr_categoria[$i][1];
-                            $combobit .=" <option value='".$arr_categoria[$i][1]."' selected>".$arr_categoria[$i][1]."</option>";
-                          }
-                          else $combobit .=" <option value='".$arr_categoria[$i][1]."'>".$arr_categoria[$i][1]."</option>";
-                        }
-                        if($c_perfil->get_PermisoInventario())
-                          echo "<td><select name='perfi' class='select'>".$combobit."</select></td>";
-                        else echo "<td><select name='perfi' class='select' disabled>".$combobit."</select></td>";
-                        echo "
                     </tr>
           <tr>
             <td  TD BGCOLOR='#FFFFFF'>
@@ -173,9 +144,6 @@ switch ($numero_error){
           </tr>
                 </table>
             </div><br><br>";
-
-echo $c_producto->get_Descripcion();
-
     echo"</fomr>";
 
 

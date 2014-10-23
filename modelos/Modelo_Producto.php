@@ -21,6 +21,7 @@ class Modelo_Producto{
 		if($reg=mysql_fetch_array($registros)){
 			$this->producto->set_Id($reg['id']);
 			$this->producto->set_Nombre($reg['nombre']);
+			$this->producto->set_Descripcion($reg['descripcion']);
 			$this->producto->set_Categoria($reg['categoria']);
 			$this->producto->set_Iva($reg['iva']);
 			$this->producto->set_Valor_Iva($reg['valorIva']);
@@ -40,6 +41,7 @@ class Modelo_Producto{
 		if($reg=mysql_fetch_array($registros)){
 			$this->producto->set_Id($reg['id']);
 			$this->producto->set_Nombre($reg['nombre']);
+			$this->producto->set_Descripcion($reg['descripcion']);
 			$this->producto->set_Categoria($reg['categoria']);
 			$this->producto->set_Iva($reg['iva']);
 			$this->producto->set_Valor_Iva($reg['valorIva']);
@@ -52,17 +54,16 @@ class Modelo_Producto{
 	
 	// int: Actualiza la BD con los datos que hay en el Controlador: usuario
 	public function actualizar_Datos_Producto($id){
-		$sql = "UPDATE usuarios SET id='".$this->producto->get_Id()."',
-									nombre='".$this->producto->get_Nombre()."',
-									descripcion = '".$this->producto->get_Descripcion()."',
-									categoria = '".$this->producto->get_Categoria()."',									
-									iva = '".$this->producto->get_Iva()."',
-									valorIva = '".$this->producto->get_valor_Iva()."',
-									precioCompra = '".$this->producto->get_Precio_Compra()."',
-									precioVenta = '".$this->producto->get_Precio_Venta()."',
-									cantidad = '".$this->producto->get_Cantidad()."',
-									estado = '".$this->producto->get_Estado()."',					
-			 WHERE id='".$id."';";
+		$sql = "UPDATE `productos` SET`nombre` = '".$this->producto->get_Nombre()."',
+								`descripcion` = '".$this->producto->get_Descripcion()."', 
+								`categoria` = '".$this->producto->get_Categoria()."',
+								`iva` = '".$this->producto->get_Iva()."', 
+								`valorIva` = '".$this->producto->get_valor_Iva()."',
+								`precioCompra` = '".$this->producto->get_Precio_Compra()."', 
+								`precioVenta` = '".$this->producto->get_Precio_Venta()."',
+								`cantidad` = '".$this->producto->get_Cantidad()."', 
+								`estado` = '".$this->producto->get_Estado()."'
+			WHERE `id` = '".$id."';";
 
 		$salida = 0;
 		$valida = new Validacion_Datos(); // <- Para validar los tipos de datos
@@ -97,17 +98,16 @@ class Modelo_Producto{
 	
 	// int: Actualiza la BD con los datos que hay en el Controlador: usuario
 	public function actualizar_Datos_Producto2($id){
-		$sql = "UPDATE usuarios SET id='".$this->producto->get_Id()."',
-									nombre='".$this->producto->get_Nombre()."',
-									descripcion = '".$this->producto->get_Descripcion()."',
-									categoria = '".$this->producto->get_Categoria()."',									
-									iva = '".$this->producto->get_Iva()."',
-									valorIva = '".$this->producto->get_valor_Iva()."',
-									precioCompra = '".$this->producto->get_Precio_Compra()."',
-									precioVenta = '".$this->producto->get_Precio_Venta()."',
-									cantidad = '".$this->producto->get_Cantidad()."',
-									estado = '".$this->producto->get_Estado()."',			
-			 WHERE id=".$id."";
+		$sql = "UPDATE `productos` SET`nombre` = '".$producto->get_Nombre()."',
+								`descripcion` = '".$producto->get_Descripcion()."', 
+								`categoria` = '".$producto->get_Categoria()."',
+								`iva` = '".$producto->get_Iva()."', 
+								`valorIva` = '".$producto->get_valor_Iva()."',
+								`precioCompra` = '".$producto->get_Precio_Compra()."', 
+								`precioVenta` = '".$producto->get_Precio_Venta()."',
+								`cantidad` = '".$producto->get_Cantidad()."', 
+								`estado` = '".$producto->get_Estado()."'
+			WHERE `id` = '".$id."';";
 
 		//echo $sql;
 		$salida = 0;
