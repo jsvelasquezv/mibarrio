@@ -166,7 +166,7 @@ class Modelo_Producto{
 		if(((strlen($this->producto->get_Id()) > 15)||(strlen($this->producto->get_Id()) < 2))) $salida = 2;
 		elseif(((strlen($this->producto->get_Nombre()) > 30)||(strlen($this->producto->get_Nombre()) < 4))) $salida = 3;
 		elseif(((strlen($this->producto->get_Descripcion()) > 500)||(strlen($this->producto->get_Descripcion()) < 15)))	$salida = 4;
-		elseif(((strlen($this->producto->get_valor_Iva()) > 6)||(strlen($this->producto->get_valor_Iva()) < 3)))	$salida = 5;
+		elseif((strlen($this->producto->get_valor_Iva())> 6 )||(strlen($this->producto->get_valor_Iva()) < 3))	$salida = 5;
 		elseif(((strlen($this->producto->get_Precio_Compra()) > 10)||(strlen($this->producto->get_Precio_Compra()) < 2))) $salida = 6;
 		elseif(((strlen($this->producto->get_Precio_Venta()) > 10)||(strlen($this->producto->get_Precio_Venta()) < 2))) $salida = 7;
 		elseif(((strlen($this->producto->get_Cantidad()) > 10)||(strlen($this->producto->get_Cantidad()) < 2))) $salida = 8;

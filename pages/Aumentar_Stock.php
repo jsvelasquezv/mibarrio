@@ -35,7 +35,7 @@ switch ($numero_error){
                             Nombre:
                         </td>
                         <td>
-                          <input type='text' name='nombre' value='".$c_producto->get_Nombre()."' placeholder='Nombre' required='required' maxlength=30/>
+                          <input type='text' name='nombre' value='".$c_producto->get_Nombre()."' placeholder='Nombre' required='required' readonly maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@ switch ($numero_error){
                             Descripcion:
                         </td>
                         <td>
-                          <input type='text' name='descripcion' value='".$c_producto->get_Descripcion()."' placeholder='Descripcion' required='required' maxlength=500/>
+                          <input type='text' name='descripcion' value='".$c_producto->get_Descripcion()."' placeholder='Descripcion' required='required' readonly maxlength=500/>
                         </td>
                     </tr>
                     <tr>
@@ -53,34 +53,21 @@ switch ($numero_error){
                         <td>
                           <input type='text' name='categoria' value='".$c_producto->get_Categoria()."' placeholder='Nombre' required='required' readonly maxlength=30/>
                         </td>  
-                    </tr>         
-                    <tr>
+                    </tr> 
+                      <tr>
                         <td>
-                           Iva:
+                            Iva:
                         </td>
                         <td>
-                            <select name='iva' class='select'>";
-                        // Aqui el algoritmo para hacer un combobox para el genero
-                        if($c_producto->get_Iva() == 'SI'){
-                            echo "
-                                <option value='SI' selected onclick='myFunction()''>SI</option>
-                                <option value='NO' onclick='myFunction2()''>NO</option>                              
-                            </select>";
-                        }elseif($c_producto->get_Iva() == 'NO') {
-                            echo "
-                                <option value='SI' onclick='myFunction()''>SI</option>
-                                <option value='NO' selected onclick='myFunction2()''>NO</option>                             
-                            </select>";
-                        }
-                        echo "
-                        </td>
-                    </tr>                 
+                          <input type='text' name='iva' value='".$c_producto->get_Iva()."' placeholder='Nombre' required='required' readonly maxlength=30/>
+                        </td>  
+                    </tr>
                     <tr>
                         <td>
                             Valor Iva:
                         </td>
                         <td>
-                          <input type='text' name='valorIva' id='valorIva' value='".$c_producto->get_Valor_Iva()."' placeholder='Valor Iva' required='required' onblur = 'myFunction3()'' maxlength=6/>
+                          <input type='text' name='valorIva' id='valorIva' value='".$c_producto->get_Valor_Iva()."' placeholder='Valor Iva' required='required' readonly maxlength=6/>
                         </td>  
                     </tr>               
                     <tr>
@@ -88,7 +75,7 @@ switch ($numero_error){
                             Precio de Compra:
                         </td>
                         <td>
-                          <input type='text' name='precioCompra' value='".$c_producto->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' maxlength=10/>
+                          <input type='text' name='precioCompra' value='".$c_producto->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' readonly maxlength=10/>
                         </td>  
                     </tr>
                      <tr>
@@ -96,7 +83,7 @@ switch ($numero_error){
                             Precio de Venta:
                         </td>
                         <td>
-                          <input type='text' name='precioVenta' value='".$c_producto->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' maxlength=10/>
+                          <input type='text' name='precioVenta' value='".$c_producto->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' readonly maxlength=10/>
                         </td>  
                     </tr>
                                 
@@ -144,21 +131,6 @@ switch ($numero_error){
           </tr>
                 </table>
             </div><br><br>
-              <script>
-                 var opcion = 0;
-                function myFunction() {
-                    opcion = 0;
-                }
-                function myFunction2() {
-                    document.getElementById('valorIva').value = '0000'
-                    opcion = 1;
-                }
-                function myFunction3() {
-                    if (opcion === 1) {
-                        document.getElementById('valorIva').value = '0000';                        
-                    }
-                }
-            </script>
             ";
     echo"</form>";
 

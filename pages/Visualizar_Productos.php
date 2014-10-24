@@ -53,6 +53,9 @@
 					<td><div class='eliminar'><font size=1><center>
 						<a href='Modificar_Producto.php?gestion=".$productos[$i][0]."'>
 						Editar<br></a>
+						<hr>
+						<a href='Aumentar_Stock.php?gestion=".$productos[$i][0]."'>
+						Aumentar Stock</a></center></font></div></td>
 					<td><font size=$tam>".$productos[$i][0]."</font></td>  
 					<td><font size=$tam>".$productos[$i][1]."</font></td>
 					<td><font size=$tam>".$productos[$i][2]."</font></td>

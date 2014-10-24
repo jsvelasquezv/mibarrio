@@ -95,7 +95,7 @@ switch ($numero_error){
                             Valor Iva:
                         </td>
                         <td>
-                            <input type='text' name='valorIva' id='valorIva' placeholder='Iva' required='required' maxlength=6/>
+                            <input type='text' name='valorIva' id='valorIva' placeholder='Iva' required='required' onblur = 'myFunction3()'' maxlength=6/>
                         </td>  
                     </tr>
                     <tr>
@@ -147,11 +147,18 @@ switch ($numero_error){
                 </table>
             </div><br><br>
             <script>
+                var opcion = 0;
                 function myFunction() {
-                document.getElementById('valorIva').disabled = false;
+                    opcion = 0;
                 }
                 function myFunction2() {
-                document.getElementById('valorIva').disabled = true;
+                    document.getElementById('valorIva').value = '0000'
+                    opcion = 1;
+                }
+                function myFunction3() {
+                    if (opcion === 1) {
+                        document.getElementById('valorIva').value = '0000';                        
+                    }
                 }
             </script>
             ";
