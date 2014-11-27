@@ -1,5 +1,5 @@
 <?php
-include_once '../class/validar.php';
+include_once '../modelos/validar.php';
 
 
 

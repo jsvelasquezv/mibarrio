@@ -5,15 +5,15 @@
 	$numero_error=$_REQUEST['gestion'];
 
 
-	echo"<div class='contenido'>";
+	echo"<div class='row well'>";
 switch ($numero_error){ 
  default:
  	//todo lo de Modificar el usuario
  	$_perfi = $c_usuario->get_Perfil();
  	 echo"<form action='../script/Crear_Categoria.php' method='post'>";
 
-		echo "<div class='CSSTableGenerator' >
-                <table >
+		echo "<div >
+                <table class='table table-striped table-hover '>
                 	<tr>
                         <td colspan='2'>
                             Crear Categoria
@@ -25,7 +25,7 @@ switch ($numero_error){
                             Id:
                         </td>
                         <td>
-                            <input type='text' name='id'  placeholder='Id' required='required' maxlength=30/>
+                            <input type='text' name='id' class='form-control' placeholder='Id' required='required' maxlength=30/>
                         </td>
                     </tr>
                     <tr>
@@ -33,7 +33,7 @@ switch ($numero_error){
                             Nombre:
                         </td>
                         <td>
-                        	<input type='text' name='nombre'  placeholder='Nombre' required='required' maxlength=30/>
+                        	<input type='text' name='nombre' class='form-control' placeholder='Nombre' required='required' maxlength=30/>
                         </td>
                     </tr>
                     <tr>
@@ -41,19 +41,11 @@ switch ($numero_error){
                             Descripcion:
                         </td>
                         <td>
-                        	<input type='text' name='descripcion'  placeholder='Descripcion' required='required' maxlength=500/>
+                        	<input type='text' name='descripcion' class='form-control' placeholder='Descripcion' required='required' maxlength=500/>
                         </td>  
                     </tr>                  
-					<tr>
-					  <td  TD BGCOLOR='#FFFFFF'>
-
-					  <input type='submit' name='crear' class='login login-submit' value='Crear Categoria'>
-
-					  </td>
-
-					  
-					</tr>
                 </table>
+					  <input type='submit' name='crear' class='btn btn-primary' value='Crear Categoria'>
             </div><br><br>";
 
 
@@ -62,37 +54,43 @@ switch ($numero_error){
 
 
 break;
-case 1:
+case "error1":
 	echo "<h1><i>Se ha creado la Categoria.</i></h1>";
 break; 
-case 2:
+case "error2":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Id' m&iacute;nimo: 5 caracteres y maximo 13 caracteres</div><br>";
 break;
-case 3:
+case "error3":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Nombre' m&iacute;nimo: 2 caracteres y maximo 30 caracteres</div><br>";
 break;
-case 4:
+case "error4":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Descripcion' m&iacute;nimo: 15 caracteres y maximo 500 caracteres</div><br>";
 break;
-case 5:
+case "error5":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Id' debe ser numerico</div><br>";
 break;
-case 6:
+case "error6":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Nombre' debe ser alfanumerico</div><br>";
 break;
-case 7:
+case "error7":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Descripcion' debe ser alfanumerico</div><br>";
 break;
-case 8:
+case "error8":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Ya existe una categoria con el mismo Id o el mismo Nombre</div><br>";
 break;
 }
 ?>
 </div>
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
+</html>

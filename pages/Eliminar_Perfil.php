@@ -2,7 +2,7 @@
 	//se incluye la pagina basica, menu entre otras cosas
 	include ("perfil.php"); 
 	// contenedor central
-	echo '<div class="contenido">';
+	echo '<div class="row well">';
 	//verificacion de permisos
 	if($c_perfil->get_PermisoSistema())	{
 		//verifica cual es la id del perfil a eliminar, enviada al dar en el enlace de eliminar
@@ -12,7 +12,7 @@
 				echo "
 					<form action='../script/Borrar_Perfil.php?id=".$perfil."' method='post'>
 					<h1>Est&aacute; seguro de que quiere eliminar el perfil ".$perfil."?</h1><p>
-					<input type='submit' name='eliminarP' class='login login-submit' value='Eliminar Perfil'>
+					<input type='submit' name='eliminarP' class='btn btn-primary' value='Eliminar Perfil'>
 				";
 
 
@@ -23,3 +23,18 @@
 	echo "</div>";
 	
 ?>
+
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
+</html>
+

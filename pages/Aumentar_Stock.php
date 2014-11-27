@@ -14,7 +14,7 @@
     if($c_perfil->get_PermisoInventario()){
         $m_producto->buscar_Producto($numero_error);
     }
-echo"<div class='contenido'>";
+echo"<div class='row well col-lg-6 col-lg-offset-3'>";
 switch ($numero_error){ 
  default:
   //todo lo de Modificar el usuario
@@ -24,7 +24,7 @@ switch ($numero_error){
   }else*/ echo"<form action='../script/Editar_Producto.php?id=".$c_producto->get_Id()."' method='post'>";
 
     echo "<div class='CSSTableGenerator' >
-                <table >
+                <table class='table table-striped table-hover '>
                   <tr>
                         <td colspan='2'>
                             Modificar Producto
@@ -35,7 +35,7 @@ switch ($numero_error){
                             Nombre:
                         </td>
                         <td>
-                          <input type='text' name='nombre' value='".$c_producto->get_Nombre()."' placeholder='Nombre' required='required' readonly maxlength=30/>
+                          <input type='text' name='nombre' class='form-control' value='".$c_producto->get_Nombre()."' placeholder='Nombre' required='required' readonly maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@ switch ($numero_error){
                             Descripcion:
                         </td>
                         <td>
-                          <input type='text' name='descripcion' value='".$c_producto->get_Descripcion()."' placeholder='Descripcion' required='required' readonly maxlength=500/>
+                          <input type='text' name='descripcion' class='form-control'value='".$c_producto->get_Descripcion()."' placeholder='Descripcion' required='required' readonly maxlength=500/>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@ switch ($numero_error){
                             Categoria:
                         </td>
                         <td>
-                          <input type='text' name='categoria' value='".$c_producto->get_Categoria()."' placeholder='Nombre' required='required' readonly maxlength=30/>
+                          <input type='text' name='categoria'class='form-control' value='".$c_producto->get_Categoria()."' placeholder='Nombre' required='required' readonly maxlength=30/>
                         </td>  
                     </tr> 
                       <tr>
@@ -59,7 +59,7 @@ switch ($numero_error){
                             Iva:
                         </td>
                         <td>
-                          <input type='text' name='iva' value='".$c_producto->get_Iva()."' placeholder='Nombre' required='required' readonly maxlength=30/>
+                          <input type='text' name='iva' class='form-control'value='".$c_producto->get_Iva()."' placeholder='Nombre' required='required' readonly maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -67,7 +67,7 @@ switch ($numero_error){
                             Valor Iva:
                         </td>
                         <td>
-                          <input type='text' name='valorIva' id='valorIva' value='".$c_producto->get_Valor_Iva()."' placeholder='Valor Iva' required='required' readonly maxlength=6/>
+                          <input type='text' name='valorIva'class='form-control' id='valorIva' value='".$c_producto->get_Valor_Iva()."' placeholder='Valor Iva' required='required' readonly maxlength=6/>
                         </td>  
                     </tr>               
                     <tr>
@@ -75,7 +75,7 @@ switch ($numero_error){
                             Precio de Compra:
                         </td>
                         <td>
-                          <input type='text' name='precioCompra' value='".$c_producto->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' readonly maxlength=10/>
+                          <input type='text' name='precioCompra'class='form-control' value='".$c_producto->get_Precio_Compra()."' placeholder='Precio de Compra' required='required' readonly maxlength=10/>
                         </td>  
                     </tr>
                      <tr>
@@ -83,7 +83,7 @@ switch ($numero_error){
                             Precio de Venta:
                         </td>
                         <td>
-                          <input type='text' name='precioVenta' value='".$c_producto->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' readonly maxlength=10/>
+                          <input type='text' name='precioVenta' class='form-control'value='".$c_producto->get_Precio_Venta()."' placeholder='Precio de Venta' required='required' readonly maxlength=10/>
                         </td>  
                     </tr>
                                 
@@ -92,7 +92,7 @@ switch ($numero_error){
                             Cantidad:
                         </td>
                         <td>
-                          <input type='text' name='cantidad' value='".$c_producto->get_Cantidad()."' placeholder='Cantidad' required='required' maxlength=10/>
+                          <input type='text' name='cantidad' class='form-control'value='".$c_producto->get_Cantidad()."' placeholder='Cantidad' required='required' maxlength=10/>
                         </td>  
                     </tr>
                        <tr>
@@ -100,7 +100,7 @@ switch ($numero_error){
                            Estado:
                         </td>
                         <td>
-                            <select name='estado' class='select'>";
+                            <select name='estado' class='form-control'>";
                         // Aqui el algoritmo para hacer un combobox para el genero
                         if($c_producto->get_Estado() == "Disponible"){
                             echo "
@@ -117,20 +117,11 @@ switch ($numero_error){
                         </td>
                     </tr>
           <tr>
-            <td  TD BGCOLOR='#FFFFFF'>
-
-            <input type='submit' name='crear' class='login login-submit' value='Actualizar Producto'>
-
-            </td>
-
-            <td colspan='2' TD BGCOLOR='#FFFFFF'>
-
-            <input type='reset' name='borrar' class='login login-submit' value='Restaurar Campos'>
-
-            </td>
-          </tr>
                 </table>
-            </div><br><br>
+            <input type='submit' name='crear' class='btn btn-primary' value='Actualizar Producto'>
+            <input type='reset' name='borrar' class='btn btn-primary' value='Restaurar Campos'>
+
+            </div>
             ";
     echo"</form>";
 
@@ -198,3 +189,9 @@ case 15:
 
 ?>
 </div>
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
+</html>

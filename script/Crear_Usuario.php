@@ -1,5 +1,5 @@
 <?php
-	include_once '../class/Validacion_Usuario.php';
+	include_once '../modelos/Validacion_Usuario.php';
 
 	$c_usuario = new Validar_Usuario();
 	$c_usuario->validar_Crear_Usuario($_REQUEST['n_id'], $_REQUEST['usu'], $_REQUEST['pass'], $_REQUEST['nom'], $_REQUEST['apell'], 

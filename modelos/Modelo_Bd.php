@@ -28,7 +28,7 @@ class BD{
 	
 	public function insertar($sql){
 		if(mysql_query($sql,$this->conexion) ){
-			mysql_close($this->conexion);
+			//mysql_close($this->conexion);
 			return true;
 		}else return false;
 	}
@@ -46,6 +46,7 @@ class BD{
 		 
 		return $registros;
 	}
+
 }
 
 ?>

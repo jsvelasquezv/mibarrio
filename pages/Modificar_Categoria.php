@@ -21,7 +21,7 @@
   //else $documento = $c_categoria->get_Nid();
 
 
-echo"<div class='contenido'>";
+echo"<div class='row well'>";
 switch ($numero_error){ 
  default:
   //todo lo de Modificar el usuario
@@ -30,8 +30,8 @@ switch ($numero_error){
     echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?perfi=0' method='post'>";
   }else*/ echo"<form action='../script/Editar_Categoria.php?doc=".$c_categoria2->get_Id()."&perfi=".$_perfi."' method='post'>";
 
-    echo "<div class='CSSTableGenerator' >
-                <table >
+    echo "<div  >
+                <table class='table table-striped table-hover '>
                   <tr>
                         <td colspan='2'>
                             Modificar Categoria
@@ -43,7 +43,7 @@ switch ($numero_error){
                             Nombre:
                         </td>
                         <td >";
-                         echo "<input type='text' name='nombre' value='".$c_categoria2->get_Nombre()."' placeholder='Nombre' required='required' maxlength=30 />";
+                         echo "<input type='text' name='nombre' class='form-control' value='".$c_categoria2->get_Nombre()."' placeholder='Nombre' required='required' maxlength=30 />";
                             echo "
                         </td>
                     </tr>
@@ -53,23 +53,13 @@ switch ($numero_error){
                            Descripcion:
                         </td>
                         <td>
-                          <input type='text' name='descripcion' value='".$c_categoria2->get_Descripcion()."' placeholder='Descripcion' required='required' maxlength=500/>
+                          <input type='text' name='descripcion' class='form-control' value='".$c_categoria2->get_Descripcion()."' placeholder='Descripcion' required='required' maxlength=500/>
                         </td>  
                     </tr>                
-          <tr>
-            <td  TD BGCOLOR='#FFFFFF'>
 
-            <input type='submit' name='crear' class='login login-submit' value='Actualizar Categoria'>
-
-            </td>
-
-            <td colspan='2' TD BGCOLOR='#FFFFFF'>
-
-            <input type='reset' name='borrar' class='login login-submit' value='Restaurar Campos'>
-
-            </td>
-          </tr>
                 </table>
+            <input type='submit' name='crear' class='btn btn-primary' value='Actualizar Categoria'>
+            <input type='reset' name='borrar' class='btn btn-primary' value='Restaurar Campos'>
             </div><br><br>";
 
 
@@ -77,37 +67,43 @@ switch ($numero_error){
     echo"</fomr>";
 
 break;
-case 1:
+case "error1":
   echo "<h1><i>Se ha modificado la Categoria.</i></h1>";
 break; 
-case 2:
+case "error2":
     echo "<div class='login-help'><h1><i>No se ha modificado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Id' m&iacute;nimo: 5 caracteres y maximo 13 caracteres</div><br>";
 break;
-case 3:
+case "error3":
     echo "<div class='login-help'><h1><i>No se ha modificado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Nombre' m&iacute;nimo: 2 caracteres y maximo 30 caracteres</div><br>";
 break;
-case 4:
+case "error4":
     echo "<div class='login-help'><h1><i>No se ha modificado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Descripcion' m&iacute;nimo: 15 caracteres y maximo 500 caracteres</div><br>";
 break;
-case 5:
+case "error5":
     echo "<div class='login-help'><h1><i>No se ha modificado la Categoria.</i></h1>";
     echo "<p>Error: 'Id' debe ser numerico</div><br>";
 break;
-case 6:
+case "error6":
     echo "<div class='login-help'><h1><i>No se ha modificado la Categoria.</i></h1>";
     echo "<p>Error: 'Nombre' debe ser alfanumerico</div><br>";
 break;
-case 7:
+case "error7":
     echo "<div class='login-help'><h1><i>No se ha modificado la Categoria.</i></h1>";
     echo "<p>Error: 'Descripcion' debe ser alfanumerico</div><br>";
 break;
-case 8:
+case "error8":
     echo "<div class='login-help'><h1><i>No se ha modificado la Categoria.</i></h1>";
     echo "<p>Error: 'Ya existe una categoria con el mismo Nombre</div><br>";
 break;
 }
 ?>
 </div>
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
+</html>

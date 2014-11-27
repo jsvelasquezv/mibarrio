@@ -7,7 +7,7 @@
 
 	$numero_error=$_REQUEST['gestion'];
 
-	echo"<div class='contenido'>";
+	echo"<div class='row well col-lg-6 col-lg-offset-3'>";
 switch ($numero_error){ 
  default:
     $c_producto = new Controlador_Producto();
@@ -24,7 +24,7 @@ switch ($numero_error){
 
         echo "<div class='CSSTableGenerator' >
 
-                <table >
+                <table class='table table-striped table-hover '>
                     <tr>
                         <td colspan='2'>
                             Crear Producto
@@ -36,7 +36,7 @@ switch ($numero_error){
                             Id:
                         </td>
                         <td >";
-                         echo "<input type='text' name='id'  placeholder='Id' required='required' maxlength=15 />";
+                         echo "<input type='text' name='id' class='form-control' placeholder='Id' required='required' maxlength=15 />";
                             echo "
                         </td>
                     </tr>    
@@ -45,7 +45,7 @@ switch ($numero_error){
                             Nombre:
                         </td>
                         <td>
-                            <input type='text' name='nombre'  placeholder='Nombre' required='required' maxlength=30/>
+                            <input type='text' name='nombre' class='form-control' placeholder='Nombre' required='required' maxlength=30/>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@ switch ($numero_error){
                             Descripcion:
                         </td>
                         <td>
-                            <input type='text' name='descripcion'  placeholder='Descripcion' required='required' maxlength=500/>
+                            <input type='text' name='descripcion' class='form-control' placeholder='Descripcion' required='required' maxlength=500/>
                         </td>  
                     </tr>
                     <tr>
@@ -67,15 +67,16 @@ switch ($numero_error){
                         //echo $arr_categorias[2][1];
                         $combobit = "";
                         for($i = 0; $i < $tam_categorias; $i++){
-                            if($c_producto->get_Categoria() === $arr_categorias[$i][1]){
+
+                            if($c_producto->get_Categoria() === $arr_categorias[$i][0]){
                                 $_cate = $arr_categorias[$i][1];
-                                $combobit .=" <option value='".$arr_categorias[$i][1]."' selected>".$arr_categorias[$i][1]."</option>";
+                                $combobit .=" <option value='".$arr_categorias[$i][0]."' selected>".$arr_categorias[$i][1]."</option>";
                             }
-                            else $combobit .=" <option value='".$arr_categorias[$i][1]."'>".$arr_categorias[$i][1]."</option>";
+                            else $combobit .=" <option value='".$arr_categorias[$i][0]."'>".$arr_categorias[$i][1]."</option>";
                         }
                         if($c_perfil->get_PermisoInventario())
-                            echo "<td><select name='categoria' class='select'>".$combobit."</select></td>";
-                        else echo "<td><select name='categoria' class='select' disabled>".$combobit."</select></td>";
+                            echo "<td><select name='categoria' class='form-control'>".$combobit."</select></td>";
+                        else echo "<td><select name='categoria' class='form-control' disabled>".$combobit."</select></td>";
                         echo "
                     </tr>
                     <tr>
@@ -84,7 +85,7 @@ switch ($numero_error){
                         </td>
                         <td>
                             <!-- Aqui el algoritmo para hacer un combobox para el iva -->
-                             <select name='iva' class='select'>
+                             <select name='iva' class='form-control'>
                                 <option value='SI' selected onclick='myFunction()''>SI</option>
                                 <option value='NO' onclick='myFunction2()''>NO</option>
                             </select>
@@ -95,7 +96,7 @@ switch ($numero_error){
                             Valor Iva:
                         </td>
                         <td>
-                            <input type='text' name='valorIva' id='valorIva' placeholder='Iva' required='required' onblur = 'myFunction3()'' maxlength=6/>
+                            <input type='text' name='valorIva'class='form-control' id='valorIva' placeholder='Iva' required='required' onblur = 'myFunction3()'' maxlength=6/>
                         </td>  
                     </tr>
                     <tr>
@@ -103,7 +104,7 @@ switch ($numero_error){
                             Precio de Compra:
                         </td>
                         <td>
-                            <input type='text' name='precioCompra'  placeholder='Precio de Compra' required='required' maxlength=10/>
+                            <input type='text' name='precioCompra'class='form-control'  placeholder='Precio de Compra' required='required' maxlength=10/>
                         </td>  
                     </tr>
                      <tr>
@@ -111,7 +112,7 @@ switch ($numero_error){
                             Precio de venta:
                         </td>
                         <td>
-                            <input type='text' name='precioVenta'  placeholder='Precio de venta' required='required' maxlength=10/>
+                            <input type='text' name='precioVenta'  class='form-control'placeholder='Precio de venta' required='required' maxlength=10/>
                         </td>  
                     </tr>
                     <tr>
@@ -119,7 +120,7 @@ switch ($numero_error){
                             Cantidad:
                         </td>
                         <td>
-                            <input type='text' name='cantidad'  placeholder='Cantidad' required='required' maxlength=10/>
+                            <input type='text' name='cantidad' class='form-control' placeholder='Cantidad' required='required' maxlength=10/>
                         </td>  
                     </tr>
                    
@@ -129,23 +130,18 @@ switch ($numero_error){
                         </td>
                         <td>
                             <!-- Aqui el algoritmo para hacer un combobox para el estado -->
-                            <select name='estado' class='select'>
+                            <select name='estado' class='form-control'>
                                 <option value='Disponible' selected>Disponible</option>
                                 <option value='No_Disponible'>No Disponible</option>
                             </select>
                         </td>  
                     </tr>                    
-                    <tr>
-                      <td  TD BGCOLOR='#FFFFFF'>
-
-                      <input type='submit' name='crear' class='login login-submit' value='Crear Producto'>
-
-                      </td>
 
                       
-                    </tr>
+
                 </table>
-            </div><br><br>
+                <input type='submit' name='crear' class='btn btn-primary' value='Crear Producto'>
+            </div>
             <script>
                 var opcion = 0;
                 function myFunction() {
@@ -167,65 +163,71 @@ switch ($numero_error){
 
 
 break;
-case 1:
+case "error1":
 	echo "<h1><i>Se ha creado el Producto.</i></h1>";
 break; 
-case 2:
+case "error2":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Id' m&iacute;nimo: 5 caracteres y maximo 15 caracteres</div><br>";
 break;
-case 3:
+case "error3":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Nombre' m&iacute;nimo: 4 caracteres y maximo 30 caracteres</div><br>";
 break;
-case 4:
+case "error4":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Descripcion' m&iacute;nimo: 15 caracteres y maximo 500 caracteres</div><br>";
 break;
-case 5:
+case "error5":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Valor Iva' m&iacute;nimo: 3 caracteres y maximo 6 caracteres</div><br>";
 break;
-case 6:
+case "error6":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Precio de Compra' m&iacute;nimo: 2 caracteres y maximo 10 caracteres</div><br>";
 break;
-case 7:
+case "error7":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Precio de Venta' m&iacute;nimo: 2 caracteres y maximo 10 caracteres</div><br>";
 break;
-case 8:
+case "error8":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Cantidad' m&iacute;nimo: 2 caracteres y maximo 10 caracteres</div><br>";
 break;
-case 9:
+case "error9":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Id debe ser alfanumerico</div><br>";
 break;
-case 10:
+case "error10":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Nombre debe ser alfabetico</div><br>";
 break;
-case 11:
+case "error11":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error:Descripcion debe ser alfanumerico</div><br>";
 break;
-case 12:
+case "error12":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Precio de Compra debe ser numerico</div><br>";
 break;
-case 13:
+case "error13":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Precio de Venta debe ser numerico</div><br>";
 break;
-case 14:
+case "error14":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Cantidad debe ser numerico</div><br>";
 break;
-case 15:
+case "error15":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Ya existe un Producto con el mismo Id</div><br>";
 break;
 }
 ?>
 </div>
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
+</html>

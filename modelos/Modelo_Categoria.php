@@ -1,6 +1,6 @@
 <?php
 include_once 'Modelo_Bd.php';
-include_once '../class/Validacion_Datos.php';
+include_once 'Validacion_Datos.php';
 
 class Modelo_Categoria{
 	private $bd;		// Tipo: BD
@@ -58,7 +58,7 @@ class Modelo_Categoria{
 		else $salida = 8;
 		
 
-		return $salida;
+		return "error".$salida;
 	}
 	
 	
@@ -88,7 +88,7 @@ class Modelo_Categoria{
 		else $salida = 8;
 		
 
-		return $salida;
+		return "error".$salida;
 	}
 	
 	public function desconectarBD(){

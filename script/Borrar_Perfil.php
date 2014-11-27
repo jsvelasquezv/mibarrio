@@ -1,6 +1,6 @@
 <?php
 	// incluye los controladores y clases necesarias 
-	include_once '../class/Validacion_Perfil.php';
+	include_once '../modelos/Validacion_Perfil.php';
 
 	// recupera la id del perfil a borrar
 	$borrar_Perfil = new Validar_Perfil();

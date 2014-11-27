@@ -4,7 +4,7 @@
 	include_once'../modelos/Modelo_Categoria.php';
 
 	//se inicia la div del contenido, el css indica donde va ubicada.
-	echo"<div class='contenido'>";
+	echo"<div class='row well'>";
 	$m_categoria = new Modelo_Categoria("");
 	///////////////////////////////////////////////////////////////////////////
 	// Funcion que retorna true si el haystack empieza por el needle
@@ -15,12 +15,12 @@
 	///////////////////////////////////////////////////////////////////////////
 	//se asigna a la variable buscar el nombre
 	$buscar = strtolower($_REQUEST['nombre']);
-	echo '<p>Buscando el nombre: '.$buscar.'<p>';
+	echo '<span>Buscando el nombre: '.$buscar.'<span>';
 
 	$recibe_pagina=$_REQUEST['page'];
 	$recibe = $recibe_pagina - 1;
 	$tam = 2;
-	echo "<div style='overflow:scroll'><table border=1 class='CSSTableGenerator'>
+	echo "<div ><table border=1 class='table table-striped table-hover '>
 		<tr>
 			<td><font size=1></font></td>
 			<td><font size=$tam>Id</font></td>
@@ -34,12 +34,14 @@
  	if($c_perfil->get_PermisoSistema()){
  		// se inicia el form con el campo para buscar el usuario por el nombre
  		// y tambien el boton para enviar lo escrito por el usuario
- 		echo"<form action='Buscar_Categoria.php?page=1' method='post'>";
- 		echo "
- 			<input type='text' name='nombre' value='' placeholder='Escriba el nombre a buscar' required='required'/>
- 			<input type='submit' name='buscar' class='login login-submit' value='Buscar'>
+ 		 echo"<form action='Buscar_Categoria.php?page=1' method='post'>";
+ 		echo "<div class='col-lg-3'>
+ 				<input type='text' class='form-control 'name='nombre' value='' placeholder='Escriba el nombre a buscar' required='required'/>
+ 			  </div>
+ 			<input type='submit' name='buscar' class='btn btn-primary' value='Buscar'>
  			";
  		echo "</form>";
+
  		// se llaman a todos los usuarios
  		$categoria_arr = $m_categoria->mostrar_Todos();
  		$categoria;
@@ -77,3 +79,9 @@
  	}
 	echo "</table></div>";	
 ?>
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
+</html>

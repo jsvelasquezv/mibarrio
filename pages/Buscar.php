@@ -3,7 +3,7 @@
 	include ("perfil.php"); 
 
 	//se inicia la div del contenido, el css indica donde va ubicada.
-	echo"<div class='contenido'>";
+	echo"<div class='row well'>";
 
 	///////////////////////////////////////////////////////////////////////////
 	// Funcion que retorna true si el haystack empieza por el needle
@@ -14,21 +14,27 @@
 	///////////////////////////////////////////////////////////////////////////
 	//se asigna a la variable buscar el nombre
 	$buscar = strtolower($_REQUEST['nombre']);
-	echo '<p>Buscando el nombre: '.$buscar.'<p>';
+	echo '<h4>Buscando el nombre:  '.$buscar.'</h4>';
 
 	$recibe_pagina=$_REQUEST['page'];
 	$recibe = $recibe_pagina - 1;
 	$tam = 2;
-	echo "<div style='overflow:scroll'><table border=1 class='CSSTableGenerator'>
+	if($c_perfil->get_PermisoSistema()){
+ 		echo"<form action='Buscar.php?page=1' method='post' class='form-inline'>
+ 				<input type='text' name='nombre' value='' placeholder='Escriba el nombre a buscar' required='required' class='form-control'/>
+ 				<input type='submit' name='buscar' class='btn btn-primary' value='Buscar' />
+ 			</form>
+ 			<br>
+ 		";
+ 	}
+	echo "<table border=1 class='table table-striped table-hover'>
+	<thead>
 		<tr>
 			<td><font size=1></font></td>
 			<td><font size=$tam>Documento</font></td>
 			<td><font size=$tam><b>Nombres</b></font></td>
 			<td><font size=$tam>Apellidos</font></td>
 			<td><font size=$tam>Usuario</font></td>
-			<td><font size=$tam>Password</font></td>
-			<td><font size=$tam>Pregunta</font></td>
-			<td><font size=$tam>Respuesta</font></td>
 			<td><font size=$tam>Tipo Id</font></td>
 			<td><font size=$tam>Ciudad</font></td>
 			<td><font size=$tam>Direcci&oacute;n</font></td>
@@ -39,18 +45,10 @@
 			<td><font size=$tam>G&eacute;nero</font></td>
 			<td><font size=$tam>Perfil</font></td>
 		</tr>
-			</font> 
+	</thead>
 	";
 	//se verifica el permiso del usuario
  	if($c_perfil->get_PermisoSistema()){
- 		// se inicia el form con el campo para buscar el usuario por el nombre
- 		// y tambien el boton para enviar lo escrito por el usuario
- 		echo"<form action='Buscar.php?page=1' method='post'>";
- 		echo "
- 			<input type='text' name='nombre' value='' placeholder='Escriba el nombre a buscar' required='required'/>
- 			<input type='submit' name='buscar' class='login login-submit' value='Buscar'>
- 			";
- 		echo "</form>";
  		// se llaman a todos los usuarios
  		$usuarios_arr = $m_usuario->mostrar_Todos();
  		$usuarios;
@@ -89,9 +87,9 @@
 					<td><font size=$tam>".$usuarios[$i][2]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][3]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][4]."</font></td>
-					<td><font size=$tam>".$usuarios[$i][5]."</font></td>
+					<!--<td><font size=$tam>".$usuarios[$i][5]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][6]."</font></td>
-					<td><font size=$tam>".$usuarios[$i][7]."</font></td>
+					<td><font size=$tam>".$usuarios[$i][7]."</font></td>-->
 					<td><font size=$tam>".$usuarios[$i][8]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][9]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][10]."</font></td>
@@ -111,5 +109,12 @@
  		
  	}
 
-	echo "</table></div>";	
+	echo "</table>";	
 ?>
+			</div>
+		</div>
+		<script src="../js/jquery.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/npm.js"></script>
+	</body>
+</html>

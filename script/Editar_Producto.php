@@ -1,6 +1,6 @@
 <?php
 
-	include_once '../class/Validacion_Producto.php';
+	include_once '../modelos/Validacion_Producto.php';
 	
 	$crear_Producto = new Validar_Producto();
 	$crear_Producto->validar_Modificar_Producto($_REQUEST['id'],$_REQUEST['nombre'],$_REQUEST['descripcion']

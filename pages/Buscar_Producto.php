@@ -4,7 +4,7 @@
 	include_once'../modelos/Modelo_Producto.php';
 
 	//se inicia la div del contenido, el css indica donde va ubicada.
-	echo"<div class='contenido'>";
+	echo"<div class='row well'>";
 	$m_producto = new Modelo_Producto("");
 	///////////////////////////////////////////////////////////////////////////
 	// Funcion que retorna true si el haystack empieza por el needle
@@ -15,12 +15,12 @@
 	///////////////////////////////////////////////////////////////////////////
 	//se asigna a la variable buscar el nombre
 	$buscar = strtolower($_REQUEST['nombre']);
-	echo '<p>Buscando el nombre: '.$buscar.'<p>';
+	echo "<p class='label-control'>Buscando el nombre: '$buscar'<p>";
 
 	$recibe_pagina=$_REQUEST['page'];
 	$recibe = $recibe_pagina - 1;
 	$tam = 2;
-	echo "<div style='overflow:scroll'><table border=1 class='CSSTableGenerator'>
+	echo "<div ><table border=1 class='table table-striped table-hover '>
 		<tr>
 			<td><font size=1></font></td>
 			<td><font size=$tam>Id</font></td>
@@ -42,8 +42,12 @@
  		// y tambien el boton para enviar lo escrito por el usuario
  		echo"<form action='Buscar_Producto.php?page=1' method='post'>";
  		echo "
- 			<input type='text' name='nombre' value='' placeholder='Escriba el nombre a buscar' required='required'/>
- 			<input type='submit' name='buscar' class='login login-submit' value='Buscar'>
+		<div class='form-group'>
+	 		<div class='col-lg-6'>
+		 			<input type='text' name='nombre' class='form-control' for='inputDefault' placeholder='Escriba el nombre a buscar' required='required'/>
+		 	</div>		
+	 			<input type='submit' name='buscar' class='btn btn-primary' value='Buscar'>
+ 		</div>
  			";
  		echo "</form>";
  		// se llaman a todos los usuarios
@@ -71,9 +75,11 @@
  		for($i = 0; $i < $tam_producto; $i++){
 			echo "
 				<tr>
-					<td><div class='eliminar'><font size=1><center>
+					<td><div><font size=1><center>
 						<a href='Visualizar_Producto.php?gestion=".$productos[$i][0]."'>
 						Editar<br></a>
+						<a href='Aumentar_Stock.php?gestion=".$productos[$i][0]."'>
+						Stock</a></center></font></div></td>
 					<td><font size=$tam>".$productos[$i][0]."</font></td>  
 					<td><font size=$tam>".$productos[$i][1]."</font></td>
 					<td><font size=$tam>".$productos[$i][2]."</font></td>
@@ -90,3 +96,9 @@
  	}
 	echo "</table></div>";	
 ?>
+		</div>
+		<script src="../js/jquery.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/npm.js"></script>
+	</body>
+</html>

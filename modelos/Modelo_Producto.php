@@ -1,6 +1,6 @@
 <?php
 include_once 'Modelo_Bd.php';
-include_once '../class/Validacion_Datos.php';
+include_once 'Validacion_Datos.php';
 
 class Modelo_Producto{
 	private $bd;		// Tipo: BD
@@ -71,7 +71,7 @@ class Modelo_Producto{
 		if(((strlen($this->producto->get_Id()) > 15)||(strlen($this->producto->get_Id()) < 2))) $salida = 2;
 		elseif(((strlen($this->producto->get_Nombre()) > 30)||(strlen($this->producto->get_Nombre()) < 4))) $salida = 3;
 		elseif(((strlen($this->producto->get_Descripcion()) > 500)||(strlen($this->producto->get_Descripcion()) < 15)))	$salida = 4;
-		elseif(((strlen($this->producto->get_valor_Iva()) > 6)||(strlen($this->producto->get_valor_Iva()) < 3)))	$salida = 5;
+		elseif(((strlen($this->producto->get_valor_Iva()) > 2)||(strlen($this->producto->get_valor_Iva()) < 1)))	$salida = 5;
 		elseif(((strlen($this->producto->get_Precio_Compra()) > 10)||(strlen($this->producto->get_Precio_Compra()) < 2))) $salida = 6;
 		elseif(((strlen($this->producto->get_Precio_Venta()) > 10)||(strlen($this->producto->get_Precio_Venta()) < 2))) $salida = 7;
 		elseif(((strlen($this->producto->get_Cantidad()) > 10)||(strlen($this->producto->get_Cantidad()) < 2))) $salida = 8;
@@ -93,7 +93,7 @@ class Modelo_Producto{
 		else $salida = 15;
 		
 
-		return $salida;
+		return "error".$salida;
 	}
 	
 	// int: Actualiza la BD con los datos que hay en el Controlador: usuario
@@ -138,7 +138,7 @@ class Modelo_Producto{
 		else $salida = 15;
 		
 
-		return $salida;
+		return "error".$salida;
 	}
 	
 	public function crear_Producto(){
@@ -187,7 +187,7 @@ class Modelo_Producto{
 		else $salida = 15;
 		
 
-		return $salida;
+		return "error".$salida;
 	}
 
 	public function desconectarBD(){
@@ -196,7 +196,8 @@ class Modelo_Producto{
 
 	public function mostrar_Todos(){
 
-		$sql = "select * from productos";/*
+		$sql = "SELECT productos.id,productos.nombre, productos.descripcion,categoria.nombre,iva,valorIva,precioCompra,precioventa,Cantidad,estado FROM productos,categoria WHERE categoria=categoria.id ORDER BY productos.nombre ASC";
+		/*$sql = "select * from productos";
 		$sql = "SELECT `Documento`, `Nombres`, `Apellidos`, `Usuario`, `Password`, `Pregunta`, `Respuesta`, 
 		`Tipo_Documento`, `Ciudad`, `Direccion`, `Edad`, `Foto`, `Telefono`, `Correo_Electronico`, `Genero`, 
 		`Nombre` FROM `usuarios`,`perfiles` WHERE (usuarios.perfiles_Nombre=perfiles.ID)";*/
@@ -214,7 +215,56 @@ class Modelo_Producto{
 
 	    return $ar;
 	}
-	
+
+	public function crear_select($permiso,$num_producto){ // Crea el select que se una en la creacion de la factura 
+
+                                $productos = $this->mostrar_Todos();
+                                $tam_productos = count($productos);
+                                $combobit = "";
+                                for($i = 0; $i < $tam_productos; $i++){
+                                    if($i==1)
+                                        $combobit .=" <option value='".$productos[$i][0]."' selected>".$productos[$i][1]."</option>";
+                                    else
+                                        $combobit .=" <option value='".$productos[$i][0]."'>".$productos[$i][1]."</option>";
+                                }
+                                if($permiso)
+                                    return "<select id='select_productos".$num_producto."' name='producto".$num_producto."' class='form-control'>".$combobit."</select>";
+                                else return "<select name='producto' class='form-control' disabled>".$combobit."</select>";
+	}
+
+
+	public function precio_Producto($id){// funcion que se ejecuta por medio de jquery, esta funcion retorna el precio del producto asi como la cantidad que hay disponible del mismo 
+				$sql = "select precioVenta , cantidad from productos where id='".$id."'";
+				$precio = mysql_fetch_array($this->bd->consultar($sql));
+				return $precio["precioVenta"]." <l> ".$precio["cantidad"];
+	}
+
+	public function selec_precio_iva($id){
+		$sql = "SELECT precioVenta,valorIva,iva from productos where id='".$id."'";
+		$registros = $this->bd->consultar($sql);
+		$arreglo_resultado = mysql_fetch_array($registros);
+		/*$resultado[0] = $arreglo_resultado[0];
+		$resultado[1] = $arreglo_resultado[1];
+		$resultado[2] = $arreglo_resultado[2];*/
+		return $arreglo_resultado;
+	}
+
+	public function crear_select2($permiso,$num_producto,$id_producto){ // crea el select en la parte de la modificacion de facturas 
+		//num_producto es el numero de producto, osea la fila en la que esta 
+
+                                $productos = $this->mostrar_Todos();
+                                $tam_productos = count($productos);
+                                $combobit = "";
+                                for($i = 0; $i < $tam_productos; $i++){
+                                    if($productos[$i][0]==$id_producto)
+                                        $combobit .=" <option value='".$productos[$i][0]."' selected>".$productos[$i][1]."</option>";
+                                    else
+                                        $combobit .=" <option value='".$productos[$i][0]."'>".$productos[$i][1]."</option>";
+                                }
+                                if($permiso)
+                                    return "<select id='select_productos".$num_producto."' name='producto".$num_producto."' class='form-control'>".$combobit."</select>";
+                                else return "<select name='producto' class='form-control' disabled>".$combobit."</select>";
+	}
 }
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-	include_once '../class/Validacion_Usuario.php'; 
+	include_once '../modelos/Validacion_Usuario.php'; 
 
 
 	$borrar_usuario = new Validar_Usuario();

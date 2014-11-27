@@ -22,19 +22,21 @@ class Modelo_Perfil{
 		$inventario= $perfil->get_permisoInventario();
 		$facturacion= $perfil->get_permisoFacturacion();
 		$reportes= $perfil->get_PermisoReportes();
+		$cliente= $perfil->get_PermisoCliente();
+		$venta= $perfil->get_PermisoVenta();
 		
 		$salida = "";
 		if(!(strlen($this->perfil->get_Nombre()) > 1))
 			$salida = "error4";
-		elseif(!$sistema && !$perfiles && !$productos && !$inventario && !$facturacion && !$reportes){
+		elseif(!$sistema && !$perfiles && !$productos && !$inventario && !$facturacion && !$reportes && !$cliente && !$venta){
 			$salida = "error5";
 		}
 		else{
 			try{
 
 
-				$sql = "INSERT INTO perfiles (Nombre, Sistema, Perfiles, Productos, Inventario, Facturacion, Reportes) 
-				VALUES ('$nombre', '$sistema', '$perfiles', '$productos', '$inventario', '$facturacion', '$reportes')";
+				$sql = "INSERT INTO perfiles (Nombre, Sistema, Perfiles, Productos, Inventario, Facturacion, Reportes, Clientes ,Venta) 
+				VALUES ('$nombre', '$sistema', '$perfiles', '$productos', '$inventario', '$facturacion', '$reportes' ,'$cliente','$venta')";
 				$this->bd->insertar($sql);
 				$salida = "exito";
 				//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
@@ -58,7 +60,9 @@ class Modelo_Perfil{
 										perfiles.Productos = '".$this->perfil->get_PermisoProductos()."',
 										perfiles.Inventario = '".$this->perfil->get_PermisoInventario()."',
 										perfiles.Facturacion = '".$this->perfil->get_PermisoFacturacion()."',
-										perfiles.Reportes = '".$this->perfil->get_PermisoReportes()."'              
+										perfiles.Reportes = '".$this->perfil->get_PermisoReportes()."' , 
+										perfiles.Clientes = '".$this->perfil->get_PermisoCliente()."' ,
+										perfiles.Venta = '".$this->perfil->get_PermisoVenta()."'             
             WHERE perfiles.Nombre = '$perfi'";
 
 			if(!(strlen($this->perfil->get_Nombre()) > 1))
@@ -102,7 +106,7 @@ class Modelo_Perfil{
 	
 	// Void: Busca en la BD el perfil (dependiendo del nombre<)  y lo guarda en el Controlador
 	public function buscar_Perfil($perfi){
-		$sql = "select ID,Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
+		$sql = "select ID,Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes,Clientes,Venta
 	                        from perfiles where Nombre='$perfi'";
 		$registros = $this->bd->consultar($sql);
 		if($reg=mysql_fetch_array($registros)){
@@ -114,13 +118,15 @@ class Modelo_Perfil{
 			$this->perfil->set_PermisoInventario($reg['Inventario']);
 			$this->perfil->set_PermisoFacturacion($reg['Facturacion']);
 			$this->perfil->set_PermisoReportes($reg['Reportes']);
+			$this->perfil->set_PermisoCliente($reg['Clientes']);
+			$this->perfil->set_PermisoVenta($reg['Venta']);
 
 		}
 	}
 	
 	// Void: Busca en la BD el perfil (dependiendo dela ID) y lo guarda en el Controlador
 	public function buscar_Perfil2($perfi){
-		$sql = "select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
+		$sql = "select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes,Clientes,Venta
 	                        from perfiles where ID='$perfi'";
 		$registros = $this->bd->consultar($sql);
 		if($reg=mysql_fetch_array($registros)){
@@ -131,6 +137,8 @@ class Modelo_Perfil{
 			$this->perfil->set_PermisoInventario($reg['Inventario']);
 			$this->perfil->set_PermisoFacturacion($reg['Facturacion']);
 			$this->perfil->set_PermisoReportes($reg['Reportes']);
+			$this->perfil->set_PermisoCliente($reg['Clientes']);
+			$this->perfil->set_PermisoVenta($reg['Venta']);
 
 		}
 	}
@@ -148,7 +156,7 @@ class Modelo_Perfil{
 
 	    for($i = 0; $row = mysql_fetch_row($registros); $i++){
 
-	        for($j = 0; $j < 7; $j++){
+	        for($j = 0; $j < 10; $j++){
 	            
 	            $ar[$i][$j] = $row[$j];
 

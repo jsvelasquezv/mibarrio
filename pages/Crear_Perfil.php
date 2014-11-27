@@ -2,7 +2,7 @@
 	//incluye el menu y demas cosas contenidas en perfil.php
 	include ("perfil.php"); 
 	//inicio de la div de contenido, cajon central
-echo"<div class='contenido'>";
+echo"<div class='row well '>";
 //segun sea el caso en el header indica la acciona realizar
 $recibe_pagina=$_REQUEST['gestion'];
 
@@ -13,96 +13,102 @@ switch ($recibe_pagina){
  	//verifica los permisos de quien se logueo
  	if($c_perfil->get_PermisoPerfiles()){
  		//imprime el form y indica a donde mandara los campos
- 		echo"<form action='../script/Crear_Perfil.php' method='post'>";
+?>
+ 		    <div class="row">
+        <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <div class="panel panel-primary">
+            <div class='panel-heading'>
+                <h2 class='panel-title text-center'>Crear Perfil</h2>
+            </div>
+            <div class=' panel-body'>
+              <form action='../script/Crear_Perfil.php' method='post' class="form-horizontal">
+                <fieldset>
+                    <div class='form-group' >
+                        <label  class='col-lg-6 control-label'>Datos del nuevo perfil:</label>
+                    </div>
+                    <div class='form-group' >
+                        <label  class='col-lg-3 control-label'>Nombre del perfil:</label>
+                        <div class='col-lg-9'>
+                            <input type='text' name='nomb_Perfil' class='form-control' placeholder='Escriba el nombre del perfil' required='required' maxlength=50/>
+                        </div>
+                    </div>
+                    <div class="">
+                    	<table border=1 class='table table-striped table-hover'>
+						<tr>
+						  <td><strong>Permiso</strong></td>
+						  <td><strong>S&iacute;</strong></td>
+						  <td><strong>No</strong></td>
+						</tr>
+						 
+						<tr>
+						  <td>Sistema</td>
+						  <td><input type='radio' name='sis' value='1' /></td>
+						  <td><input type='radio' name='sis' value='0' checked='checked' /></td>
+						</tr>
+						 
+						<tr>
+						  <td>Perfiles</td>
+						  <td><input type='radio' name='perf' value='1' /></td>
+						  <td><input type='radio' name='perf' value='0' checked='checked' /></td>
+						</tr>
+						 
+						<tr>
+						  <td>Productos</td>
+						  <td><input type='radio' name='prod' value='1' /></td>
+						  <td><input type='radio' name='prod' value='0' checked='checked' /></td>
+						</tr>
 
- 		//div con scroll, que contendra la tabla con las opciones.
- 		// el primer input contendra el campo para el nombre del nuevo perfil
-		echo "<div class='CSSTableGenerator' >
-                <table >
-                	<tr>
-                        <td colspan='2'>
-                            Datos del nuevo perfil:
-                        </td>
-                     <tr> 
+						<tr>
+						  <td>Inventario</td>
+						  <td><input type='radio' name='inv' value='1' /></td>
+						  <td><input type='radio' name='inv' value='0' checked='checked' /></td>
+						</tr>
 
-                    <tr>
-                        <td>
-                            Nombre del perfil:
-                        </td>
-                        <td >
-                            <input type='text' name='nomb_Perfil' value='' placeholder='Escriba el nombre del perfil' required='required' maxlength=50/>
-                        </td>
-                     <tr>   
-                </table>
-            </div><br><br>";
+						<tr>
+						  <td>Facturacion</td>
+						  <td><input type='radio' name='fac' value='1' /></td>
+						  <td><input type='radio' name='fac' value='0' checked='checked' /></td>
+						</tr>
 
-         // se imprime otra tabla que contendra los radio (casillas de opcion) al ser seleccionadas y dar sumit, envian el value.
-         //los radio que tengan el mismo "name" solo pueden seleccionarese una opcion.   
-		echo "<div class='CSSTableGenerator'><table>
-					<tr>
-					  <td><strong>Permiso</strong></td>
-					  <td><strong>S&iacute;</strong></td>
-					  <td><strong>No</strong></td>
-					</tr>
-					 
-					<tr>
-					  <td>Sistema</td>
-					  <td><input type='radio' name='sis' value='1' /></td>
-					  <td><input type='radio' name='sis' value='0' checked='checked' /></td>
-					</tr>
-					 
-					<tr>
-					  <td>Perfiles</td>
-					  <td><input type='radio' name='perf' value='1' /></td>
-					  <td><input type='radio' name='perf' value='0' checked='checked' /></td>
-					</tr>
-					 
-					<tr>
-					  <td>Productos</td>
-					  <td><input type='radio' name='prod' value='1' /></td>
-					  <td><input type='radio' name='prod' value='0' checked='checked' /></td>
-					</tr>
+						<tr>
+						  <td>Clientes</td>
+						  <td><input type='radio' name='cli' value='1' /></td>
+						  <td><input type='radio' name='cli' value='0' checked='checked' /></td>
+						</tr>
 
-					<tr>
-					  <td>Inventario</td>
-					  <td><input type='radio' name='inv' value='1' /></td>
-					  <td><input type='radio' name='inv' value='0' checked='checked' /></td>
-					</tr>
+						<tr>
+						  <td>Venta</td>
+						  <td><input type='radio' name='ven' value='1' /></td>
+						  <td><input type='radio' name='ven' value='0' checked='checked' /></td>
+						</tr>
 
-					<tr>
-					  <td>Facturacion</td>
-					  <td><input type='radio' name='fac' value='1' /></td>
-					  <td><input type='radio' name='fac' value='0' checked='checked' /></td>
-					</tr>
+						<tr>
+						  <td>Reportes</td>
+						  <td><input type='radio' name='rep' value='1' /></td>
+						  <td><input type='radio' name='rep' value='0' checked='checked' /></td>
+						  </table>	
+                    </div>
+                    <div class='form-group' >
+                        <div class='col-lg-9 col-lg-offset-3'>        
+                            <input type='submit' name='crear' class='btn btn-primary' value='Crear Perfil'>
+                        </div>
+                    </div>
 
-					<tr>
-					  <td>Reportes</td>
-					  <td><input type='radio' name='rep' value='1' /></td>
-					  <td><input type='radio' name='rep' value='0' checked='checked' /></td>
-					</tr>
+                    <div class='form-group' >
+                        <div class='col-lg-9 col-lg-offset-3'>        
+                            <input type='reset' name='borrar' class='btn btn-primary' value='Borrar Campos'>
+                        </div>
+                    </div>
 
-					<tr>
-					  
-					  <td colspan='3'><br></td>
-					</tr>
+                </fieldset>
+              </form>
+          </div>
+          </div>
+        </div>
+    </div>
+<?php
 
-					<tr>
-					  <td  TD BGCOLOR='#FFFFFF'>
-
-					  <input type='submit' name='crear' class='login login-submit' value='Crear Perfil'>
-
-					  </td>
-
-					  <td colspan='2' TD BGCOLOR='#FFFFFF'>
-
-					  <input type='reset' name='borrar' class='login login-submit' value='Borrar Campos'>
-
-					  </td>
-					</tr>
-
-			</table></div>";
-
-		echo"</fomr>";
 
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
@@ -187,34 +193,30 @@ case "visualizar":
 			
 		//inicio del form con una tabla pequeña que contendra el combo y el submit para enviar el nombre a esta misma pagina 
 		// con otro header en gestion
-		echo"<form action='Crear_Perfil.php?gestion=visualizar-seleccion' method='post'>
-
-		<div class='CSSTableGenerator'><table>
-
-		<tr>
-		<td colspan='2'>
-                     Selecciona un perfil:
-        </td>
-		</tr>
-
-		<tr>
-		<td>
-			<select name='Nombre_perfil' class='select'>";
-				       
-		for($i=0; $i<count($data); $i++)
-		{
-			echo "<option value='"; 
-			echo "".$data[$i][0]."'>";
-			echo "".$data[$i][0]."</option>";	
-		}
-		
-		echo"</select>
-		</td>";	
-
-		echo"<td>
-		<input type='submit' name='visualizar' class='login login-submit' value='Visualizar'>
-		</td>";
-		echo"<tr>";
+		echo"<form action='Crear_Perfil.php?gestion=visualizar-seleccion' method='post' class='form-horizontal'>
+				<fieldset>
+                    <div class='form-group' >
+                        <label  class='col-lg-3 control-label'>Selecciona un perfil:</label>
+                        <div class='col-lg-3'>
+							<select name='Nombre_perfil' class=' form-control'>";       
+							for($i=0; $i<count($data); $i++)
+							{
+								echo "<option value='"; 
+								echo "".$data[$i][0]."'>";
+								echo "".$data[$i][0]."</option>";	
+							}
+						
+						echo"</select>
+						</div>
+					</div>
+					<div class='form-group' >
+						<div class='col-lg-9 col-lg-offset-3'>  
+							<input type='submit' name='visualizar' class='btn btn-primary' value='Visualizar'>
+						</div>
+					</div>";
+					echo"
+				</fieldset>
+			</form>";
 
 break; 
 case "visualizar-seleccion":
@@ -231,16 +233,23 @@ case "visualizar-seleccion":
 
 		// imprime una tabla con la informacion del perfil (permisos "booleanos", y nombre "string")
 		// en caso de que un permiso sea true, imprime "si", caso contrario "no".
-		echo "
 
-		<div class='CSSTableGenerator'><table>
+		echo " 
+		<div class='row'>
+        <div class='col-lg-2'></div>
+      <div class='col-lg-8'>
+        <div class='panel panel-primary'>
+            <div class='panel-heading'>
+                <h2 class='panel-title text-center'>Modificar Perfil</h2>
+            </div>
+            <div class=' panel-body'>
+
+            	<div class='CSSTableGenerator'><table class='table table-striped table-hover'>
 					<tr>
-					  <td ><strong>Perfil: ".$namePE."</strong></td>
-					 
-					</tr></table></div><br><br><br>";
+					  <td ><strong>Perfil: ".$namePE."</strong></td></tr></table></div>";
 
 
-		echo "<div class='CSSTableGenerator'><table>
+		echo "<table class='table table-striped table-hover'>
 					<tr>
 					   <td colspan='3'><strong>Permiso</strong></td>
 					  
@@ -301,6 +310,26 @@ case "visualizar-seleccion":
 					</tr>
 
 					<tr>
+					  <td>Clientes</td>";
+					  if($consulta_perfil->get_PermisoCliente()){
+							echo "<td><strong>Si</strong></td>";	
+						}
+						else echo "<td><strong>No</strong></td>";
+
+					 echo"
+					</tr>
+
+					<tr>
+					  <td>Venta</td>";
+					  if($consulta_perfil->get_PermisoVenta()){
+							echo "<td><strong>Si</strong></td>";	
+						}
+						else echo "<td><strong>No</strong></td>";
+
+					 echo"
+					</tr>
+
+					<tr>
 					  <td>Reportes</td>";
 					  if($consulta_perfil->get_PermisoReportes()){
 							echo "<td><strong>Si</strong></td>";	
@@ -315,21 +344,25 @@ case "visualizar-seleccion":
 					</tr>
 
 					<tr>
-					  <td  TD BGCOLOR='#FFFFFF'>
+					  <td >
 
-					  	 <a href='Modificar_Perfil.php?id=".$namePE."'><div class='links2 links2-submit'>
-						 <b>Modificar perfil</b></div></a>
+					  	 <a href='Modificar_Perfil.php?id=".$namePE."'class='btn btn-primary'>
+						 Modificar perfil</a>
 					  
 					  </td>
 
-					  <td colspan='2' TD BGCOLOR='#FFFFFF'>
-					  	<a href='Eliminar_Perfil.php?id=".$namePE."'><div class='links2 links2-submit'>
-						<b>Eliminar perfil</b></div></a>
+					  <td >
+					  	<a href='Eliminar_Perfil.php?id=".$namePE."'class='btn btn-primary'>
+						Eliminar perfil</a>
 
 					  </td>
 					</tr>
 
-			</table></div>";
+			</table>
+			</div>
+          </div>
+        </div>
+    </div>";
 break;		
 default:
 // en caso no presentarse ninguna de las opciones anteriores imprime esto
@@ -341,6 +374,16 @@ echo "<h1><b>Bienvenido, ".$c_usuario->get_Nombres().".</b></h1>";
 </div>
 
 
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</body>
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
 </html>

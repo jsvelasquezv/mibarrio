@@ -1,6 +1,6 @@
 <?php
 include_once 'Modelo_Bd.php';
-include_once '../class/Validacion_Datos.php';
+include_once 'Validacion_Datos.php';
 
 class Modelo_Usuario{
 	private $bd;		// Tipo: BD
@@ -150,7 +150,7 @@ class Modelo_Usuario{
 	}
 	
 	// int: Actualiza la BD con los datos que hay en el Controlador: usuario
-	public function actualizar_Datos_Usuario2($documento){
+	public function actualizar_Datos_Usuario2(){
 		$sql = "UPDATE usuarios SET Documento=".$this->usuario->get_Nid().",
 									Nombres='".$this->usuario->get_Nombres()."',
 									Apellidos = '".$this->usuario->get_Apellidos()."',
@@ -166,7 +166,7 @@ class Modelo_Usuario{
 									Correo_Electronico = '".$this->usuario->get_Email()."',
 									Genero = '".$this->usuario->get_Genero()."',
 									perfiles_Nombre = '".$this->usuario->get_Perfil()."'
-			 WHERE Documento=".$documento."";
+			 WHERE Documento=".$this->usuario->get_Nid()."";
 
 
 
@@ -213,7 +213,7 @@ class Modelo_Usuario{
 		$sql = "INSERT INTO usuarios (`Documento`, `Nombres`, `Apellidos`, `Usuario`, 
 			`Password`, `Pregunta`, `Respuesta`, `Tipo_Documento`, `Ciudad`, `Direccion`, 
 			`Edad`, `Foto`, `Telefono`, `Correo_Electronico`, `Genero`, `perfiles_Nombre`) 
-		SELECT '".$this->usuario->get_Nid()."',
+		VALUES ('".$this->usuario->get_Nid()."',
 									'".$this->usuario->get_Nombres()."',
 									'".$this->usuario->get_Apellidos()."',
 									'".$this->usuario->get_Usuario()."',
@@ -228,8 +228,7 @@ class Modelo_Usuario{
 									'".$this->usuario->get_Celular()."',
 									'".$this->usuario->get_Email()."',
 									'".$this->usuario->get_Genero()."',
-									ID 
-		FROM perfiles WHERE perfiles.Nombre='".$this->usuario->get_Perfil()."';";
+									'".$this->usuario->get_Perfil()."');";
 
 		$salida = 0;
 		$valida = new Validacion_Datos(); // <- Para validar los tipos de datos
@@ -263,11 +262,7 @@ class Modelo_Usuario{
 
 
 		///////////////////////////////////////////////////////////////////////////
-	
-
-
-
-		
+			
 		elseif($this->bd->insertar($sql))
 			$salida = true;
 		else $salida = 31;
@@ -317,6 +312,9 @@ class Modelo_Usuario{
 	    }
 
 	    return $ar;
+	}
+	public function getControladorUsuario(){
+		return $this->usuario;
 	}
 	
 }

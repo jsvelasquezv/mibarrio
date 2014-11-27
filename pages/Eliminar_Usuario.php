@@ -1,7 +1,7 @@
 <?php
 
 	include ("perfil.php"); 
-	echo '<div class="contenido">';
+	echo '<div class="row well">';
 	$c_usuario2 = new Controlador_Usuario();
 	$m_usuario2 = new Modelo_Usuario($c_usuario2);
 	if($c_perfil->get_PermisoSistema())	{
@@ -24,8 +24,12 @@
 				echo "
 					<form action='../script/Borrar_Usuario.php?documento=".$usuario."' method='post'>
 					<h1>Est&aacute; seguro de que quiere eliminar el usuario ".$c_usuario2->get_Nombres()." ".
-					$c_usuario2->get_Apellidos()."?</h1><p>
-					<input type='submit' name='eliminar' class='login login-submit' value='Eliminar Usuario'>
+					$c_usuario2->get_Apellidos()."?</h1>
+					<div class='input-group'>
+						<span class='input-group-addon'><i class='fa fa-trash-o fa-lg'></i></span>
+						<input type='submit' name='eliminar' class='btn btn-danger' value='Eliminar Usuario'>
+					<div>
+					</form>
 
 				";
 				break;
@@ -37,3 +41,16 @@
 	echo "</div>";
 	
 ?>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/npm.js"></script>
+    </body>
+</html>

@@ -1,6 +1,6 @@
 <?php
 
-	include_once '../class/Validar_Categoria.php';
+	include_once '../modelos/Validar_Categoria.php';
 	// incluye las clases con metodos necesarios para la creacion del perfil
 
 	// obitne el nombre(string) y permisos(boolean) del nuevo perfil ingresados en el form. 
