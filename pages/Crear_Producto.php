@@ -141,6 +141,7 @@ switch ($numero_error){
 
                 </table>
                 <input type='submit' name='crear' class='btn btn-primary' value='Crear Producto'>
+                <button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>
             </div>
             <script>
                 var opcion = 0;
@@ -165,62 +166,77 @@ switch ($numero_error){
 break;
 case "error1":
 	echo "<h1><i>Se ha creado el Producto.</i></h1>";
+    echo "<a href='/mibarrio/pages/Visualizar_Productos.php?page=1' class='btn btn-primary'>Ok</a>";
 break; 
 case "error2":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Id' m&iacute;nimo: 5 caracteres y maximo 15 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error3":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Nombre' m&iacute;nimo: 4 caracteres y maximo 30 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error4":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Descripcion' m&iacute;nimo: 15 caracteres y maximo 500 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error5":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Valor Iva' m&iacute;nimo: 3 caracteres y maximo 6 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error6":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Precio de Compra' m&iacute;nimo: 2 caracteres y maximo 10 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error7":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Precio de Venta' m&iacute;nimo: 2 caracteres y maximo 10 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error8":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Cantidad' m&iacute;nimo: 2 caracteres y maximo 10 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error9":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Id debe ser alfanumerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error10":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Nombre debe ser alfabetico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error11":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error:Descripcion debe ser alfanumerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error12":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Precio de Compra debe ser numerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error13":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Precio de Venta debe ser numerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error14":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Cantidad debe ser numerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error15":
     echo "<div class='login-help'><h1><i>No se ha creado el Producto.</i></h1>";
     echo "<p>Error: Ya existe un Producto con el mismo Id</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 }
 ?>

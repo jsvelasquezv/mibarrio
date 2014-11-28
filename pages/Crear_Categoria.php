@@ -46,6 +46,7 @@ switch ($numero_error){
                     </tr>                  
                 </table>
 					  <input type='submit' name='crear' class='btn btn-primary' value='Crear Categoria'>
+                      <button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>
             </div><br><br>";
 
 
@@ -56,34 +57,42 @@ switch ($numero_error){
 break;
 case "error1":
 	echo "<h1><i>Se ha creado la Categoria.</i></h1>";
+    echo "<a href='/mibarrio/pages/Visualizar_Categorias.php?page=1' class='btn btn-default'>Ok</a>";
 break; 
 case "error2":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Id' m&iacute;nimo: 5 caracteres y maximo 13 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error3":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Nombre' m&iacute;nimo: 2 caracteres y maximo 30 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error4":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Descripcion' m&iacute;nimo: 15 caracteres y maximo 500 caracteres</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error5":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Id' debe ser numerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error6":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Nombre' debe ser alfanumerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error7":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Descripcion' debe ser alfanumerico</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 case "error8":
     echo "<div class='login-help'><h1><i>No se ha creado la Categoria.</i></h1>";
     echo "<p>Error: 'Ya existe una categoria con el mismo Id o el mismo Nombre</div><br>";
+    echo "<button type='button' class='btn btn-primary' onclick='history.back()'>Atras</button>";
 break;
 }
 ?>
